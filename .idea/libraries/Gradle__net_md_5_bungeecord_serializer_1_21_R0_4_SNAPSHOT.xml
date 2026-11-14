@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: net.md-5:bungeecord-serializer:1.21-R0.4-SNAPSHOT" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="net.md-5" artifactId="bungeecord-serializer" version="1.21-R0.4-SNAPSHOT" baseVersion="1.21-R0.4-SNAPSHOT" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.md-5/bungeecord-serializer/1.21-R0.4-SNAPSHOT/d1e294d6a6807a22845c5cedac0e788a24474fa/bungeecord-serializer-1.21-R0.4-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.md-5/bungeecord-serializer/1.21-R0.4-SNAPSHOT/e689522fb464ecf0faec9d3bd69e92be7ad3f073/bungeecord-serializer-1.21-R0.4-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

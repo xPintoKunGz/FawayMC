@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: net.md-5:bungeecord-dialog:1.21-R0.4-SNAPSHOT" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="net.md-5" artifactId="bungeecord-dialog" version="1.21-R0.4-SNAPSHOT" baseVersion="1.21-R0.4-SNAPSHOT" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.md-5/bungeecord-dialog/1.21-R0.4-SNAPSHOT/9626e809752a75541a979e9383679d416f4af303/bungeecord-dialog-1.21-R0.4-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.md-5/bungeecord-dialog/1.21-R0.4-SNAPSHOT/373fe820b2e8352e90bf1ae3f3f3d2df5cd1e3f6/bungeecord-dialog-1.21-R0.4-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
