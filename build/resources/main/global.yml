@@ -1,0 +1,56 @@
+# FawayMC Global Configuration
+# ===== Spawn Block Protection =====
+spawn_protection:
+  leaves_decay: true          # ใบไม้ร่วง/เน่า
+  block_fade: true            # น้ำแข็ง/หิมะละลาย
+  block_burn: true            # ไฟไหม้บล็อก
+  block_spread: true          # ไฟลุกลาม
+  block_ignite: true          # จุดไฟ
+  liquid_flow: false          # น้ำ/ลาวาไหล (ปิดไว้เพราะกิน performance)
+  block_grow: false           # พืชโต (ปิดไว้เพราะกิน performance)
+  entity_change_block: true   # enderman/falling sand เปลี่ยนบล็อก
+
+messages:
+  join:
+    message: "&a[+] %luckperms_prefix%{player} &eได้เข้าร่วมเซิร์ฟเวอร์!"
+    welcome_board:
+      - ""
+      - "&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█"
+      - ""
+      - "               &b&l✦ &e&lFAWAYMC NETWORK &b&l✦"
+      - ""
+      - "              &fWelcome back, &a&l{player}&f!"
+      - ""
+      - "   &8▶ &7Website &8» &fhttps://www.fawaymc.net"
+      - "   &8▶ &9Discord &8» &fbroadcast.gg/fawaymc"
+      - "   &8▶ &cStore   &8» &fstore.fawaymc.net"
+      - ""
+      - "   &e&lTIP &8» &7Right-click your &bServer Selector &7star"
+      - "         &7to choose your game mode and start playing!"
+      - ""
+      - "&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█"
+      - ""
+  quit:
+    message: "&c[-] %luckperms_prefix%{player} &cออกจากเซิร์ฟเวอร์แล้ว"
+  admin:
+    no_permission: "&cYou do not have permission to execute this command."
+    block_break_admin: "&cYou cannot break blocks in this area. (Use /build on to enable)"
+    block_break_player: "&cYou cannot break blocks in this area."
+    block_place_admin: "&cYou cannot place blocks in this area. (Use /build on to enable)"
+    block_place_player: "&cYou cannot place blocks in this area."
+    block_interact_admin: "&cYou cannot interact with this object in this area. (Use /build on to enable)"
+    block_interact_player: "&cYou cannot interact with this object in this area."
+    build_actionbar_on: "&fBuild Mode: &aON"
+    build_actionbar_off: "&fBuild Mode: &cOFF"
+    build_usage: "&eUsage: &f/build <on|off>"
+    adminmode_enabled: "&aAdmin Mode enabled. (Build Mode status visible)"
+    adminmode_disabled: "&cAdmin Mode disabled."
+    adminmode_usage: "&eUsage: /adminmode <on|off>"
+    block_warning_cooldown_ms: 2000
+  spawn:
+    set_success: "&aLobby spawn point has been successfully set."
+    teleport_success: "&bTeleported to the spawn point."
+    not_set: "&cSpawn point has not been set. Please contact an administrator to set it via /setspawn."
+    console_only: "This command can only be executed in-game by a player."
+  reload:
+    success: "&aGlobal Plugin configuration has been reloaded successfully."

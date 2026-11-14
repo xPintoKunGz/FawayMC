@@ -1,0 +1,18 @@
+# FawayMC Custom Tablist Configuration
+
+tablist:
+  enabled: true
+  update_ticks: 20
+  header:
+    - "&bYou are playing on &e&lFAWAYMC.NET"
+    - ""
+  footer:
+    - ""
+    - "&aRanks, Cosmetics & MORE! &c&lSTORE.FAWAYMC.NET"
+
+messages:
+  no_permission: "&cคุณไม่มีสิทธิ์ใช้งานคำสั่งนี้!"
+  usage: "&eการใช้งาน: /tablist <on|off|reload>"
+  enabled: "&aเปิดใช้งาน Tablist เรียบร้อยแล้ว!"
+  disabled: "&cปิดใช้งาน Tablist เรียบร้อยแล้ว!"
+  reload: "&aรีโหลดไฟล์ tablist.yml เรียบร้อยแล้ว!"

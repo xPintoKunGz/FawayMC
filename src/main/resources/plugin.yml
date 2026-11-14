@@ -1,0 +1,45 @@
+name: FawayMC
+version: '1.0'
+main: org.kcm.bloomery.fawaymc.global.Global
+api-version: '26.3'
+softdepend: [PlaceholderAPI]
+authors: [ Bloomery Network Team, xPintoKunG_Z, Peak4567 ]
+
+commands:
+  spawn:
+    description: Warp to spawn
+    usage: /spawn
+  setspawn:
+    description: Set spawn
+    permission: global.admin
+    usage: /setspawn
+  globalreload:
+    description: Reload global
+    permission: global.admin
+    usage: /globalreload
+  scoreboard:
+    description: Manage Scoreboard (on, off, reload)
+    permission: global.admin
+  tablist:
+    description: Manage Tablist (on, off, reload)
+    permission: global.admin
+  doublejump:
+    description: Manage Double Jump (on, off, reload)
+    permission: global.admin
+  build:
+    description: Manage Build (Admin)
+    permission: global.admin
+  bossbar:
+    description: จัดการ BossBar
+    usage: /bossbar <on|off|reload>
+    permission: global.admin
+  worldrestriction:
+    description: Manage World
+    permission: global.admin
+  globalmotd:
+    description: Manage MOTD
+    permission: global.admin
+  adminmode:
+    description: เปิด/ปิด Admin Mode (แสดง actionbar Build Mode)
+    usage: /adminmode <on|off>
+    permission: global.admin
