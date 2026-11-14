@@ -1,0 +1,186 @@
+# ═══════════════════════════════════════════════════════════
+# FawayAdvancement Configuration
+# ═══════════════════════════════════════════════════════════
+
+settings:
+  auto_save_minutes: 5
+  broadcast_on_high_tier: true
+  auto_cleanup: true
+
+display:
+  title: "&8&l✦ &6&lADVANCEMENTS &8&l✦"
+  category_title: "&8&l✦ &6{category} &8&l✦"
+  toast_enabled: true
+  sound_on_unlock: true
+  toast:
+    # pattern: AUTO / TASK / GOAL / CHALLENGE
+    #   AUTO = ตาม tier (common→task, rare/epic→goal, legendary/mythic→challenge)
+    #   TASK = กรอบปกติ (สีเหลืองอ่อน)
+    #   GOAL = กรอบ goal (สีส้ม)
+    #   CHALLENGE = กรอบ challenge (สีม่วง + effect)
+    pattern: "AUTO"
+
+    # ★ เสียงตอน toast เข้ามา
+    sound_in: "UI_TOAST_IN"
+
+    # ★ เสียงตอน toast จบ (เฉพาะ CHALLENGE frame)
+    sound_out: "UI_TOAST_CHALLENGE_COMPLETE"
+
+    # ★ Override icon (เว้นว่าง = ใช้ Material ของ advancement)
+    icon_override: ""
+
+    # ★ พื้นหลังของ toast
+    background: "minecraft:textures/block/stone.png"
+
+# ═══════════════════════════════════════════════════════════
+# Categories (แสดงเป็นเมนูหลัก)
+# ═══════════════════════════════════════════════════════════
+categories:
+  general:
+    name: "&a&lGeneral"
+    icon: "GRASS_BLOCK"
+    description: "&7Basic server achievements"
+    slot: 11
+  mining:
+    name: "&6&lMining"
+    icon: "DIAMOND_PICKAXE"
+    description: "&7Dig deep for glory"
+    slot: 13
+  combat:
+    name: "&c&lCombat"
+    icon: "IRON_SWORD"
+    description: "&7Prove your battle prowess"
+    slot: 15
+
+# ═══════════════════════════════════════════════════════════
+# Advancements
+#
+# trigger:
+#   JOIN        — เข้าเซิร์ฟครั้งแรก
+#   PLAY_TIME   — เวลาเล่นรวม (นาที)
+#   BLOCK_BREAK — ขุดบล็อก (ระบุ material / amount)
+#   BLOCK_PLACE — วางบล็อก
+#   MOB_KILL    — สังหารมอน (ระบุ entity_type / amount)
+#   PLAYER_KILL — สังหารผู้เล่น
+#   LEVEL       — ถึงเลเวล (via API)
+#   COMMAND     — trigger ด้วย /advadmin trigger <player> <advId>
+#   API         — trigger ด้วย API อย่างเดียว
+# ═══════════════════════════════════════════════════════════
+advancements:
+  # ─── LOBBY: Lucky Block ───
+  lucky_first:
+    category: general
+    name: "&d&lFirst Lucky Box"
+    description: "&7Open your first Lucky Block"
+    icon: "CHEST"
+    tier: common
+    trigger: API
+    required: 1
+    reward:
+      coins: 75
+      exp: 20
+
+  lucky_50:
+    category: general
+    name: "&5&lBox Enthusiast"
+    description: "&7Open 50 Lucky Blocks"
+    icon: "ENDER_CHEST"
+    tier: rare
+    parent: lucky_first
+    trigger: API
+    required: 50
+    reward:
+      coins: 250
+      exp: 75
+      vault:
+        amount: 1
+
+  lucky_500:
+    category: general
+    name: "&6&lBox Master"
+    description: "&7Open 500 Lucky Blocks"
+    icon: "SHULKER_BOX"
+    tier: epic
+    parent: lucky_50
+    trigger: API
+    required: 500
+    reward:
+      coins: 500
+      exp: 150
+      vault:
+        amount: 2
+
+  # ─── LOBBY: Cosmetics ───
+  cosmetic_first:
+    category: general
+    name: "&d&lFashion Forward"
+    description: "&7Unlock your first cosmetic"
+    icon: "LEATHER_CHESTPLATE"
+    tier: common
+    trigger: API
+    required: 1
+    reward:
+      coins: 100
+      exp: 25
+
+  cosmetic_collector:
+    category: general
+    name: "&5&lCollector"
+    description: "&7Unlock 10 cosmetics"
+    icon: "DIAMOND_CHESTPLATE"
+    tier: rare
+    parent: cosmetic_first
+    trigger: API
+    required: 10
+    reward:
+      coins: 300
+      exp: 90
+      vault:
+        amount: 1
+
+  # ─── LOBBY: Daily ───
+  daily_first:
+    category: general
+    name: "&e&lDaily Grind"
+    description: "&7Claim your first daily reward"
+    icon: "CLOCK"
+    tier: common
+    trigger: API
+    required: 1
+    reward:
+      coins: 75
+      exp: 20
+
+# ═══════════════════════════════════════════════════════════
+# Tiers (สีที่แสดง)
+# ═══════════════════════════════════════════════════════════
+tiers:
+  common:
+    color: "&7"
+    name: "Common"
+  uncommon:
+    color: "&a"
+    name: "Uncommon"
+  rare:
+    color: "&9"
+    name: "Rare"
+  epic:
+    color: "&5"
+    name: "Epic"
+  legendary:
+    color: "&6"
+    name: "Legendary"
+  mythic:
+    color: "&c"
+    name: "Mythic"
+
+# ═══════════════════════════════════════════════════════════
+# Messages
+# ═══════════════════════════════════════════════════════════
+messages:
+  unlocked: "&a&l✔ &aAdvancement Unlocked: &e{name}"
+  unlocked_broadcast: "&6{player} &eunlocked &6{name}&e!"
+  progress: "&e{name} &7- &f{current}&7/&f{required} &7({percent}%)"
+  already_unlocked: "&cYou already have this advancement!"
+  not_found: "&cAdvancement not found: {id}"
+  reset_done: "&aReset all advancements for &e{player}"

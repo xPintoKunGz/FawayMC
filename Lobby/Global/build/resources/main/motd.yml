@@ -1,0 +1,22 @@
+# FawayMC MOTD Configuration
+
+motd:
+  enabled: true
+  line_1:
+    - "      &b&lFAWAYMC NETWORK &7[26.3] &e&lPLAY NOW!"
+    - "        &e&lFAWAYMC NETWORK &c[26.3] &d&lSEASON 1"
+  line_2:
+    - "  &a&lWELCOME! &fExplore, build, and have fun with us!"
+    - "   &c&lEVENTS! &fJoin our latest seasonal minigames!"
+    - "         &b&lCOMMUNITY &f&ndiscord.gg/fawaymc"
+  custom_max_players:
+    enabled: false
+    max: 2026
+  icon:
+    enabled: true
+    file_name: "server-icon.png"
+
+messages:
+  no_permission: "&cYou do not have permission to execute this command!"
+  reload: "&a[FawayMC] Successfully reloaded motd.yml configuration!"
+  usage: "&eUsage: /globalmotd reload"

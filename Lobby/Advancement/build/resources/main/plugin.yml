@@ -1,0 +1,23 @@
+name: FawayMC-Advancement
+version: '1.0'
+main: org.kcm.bloomery.fawaymc.advancement.Global
+api-version: '26.3'
+softdepend: [PlaceholderAPI, Luckyblock, Level]
+authors: [ Bloomery Network Team, FawayMC Team, xPintoKunG_Z, Peak4567 ]
+
+commands:
+  advancement:
+    description: Open advancement menu
+    aliases: [adv, advancements, ach, achievements]
+    usage: /advancement
+  advancementadmin:
+    description: Admin commands
+    aliases: [advadmin, adva]
+    permission: fawayadvancement.admin
+    usage: /advadmin <give|revoke|setprogress|reset|list|reload|trigger>
+
+permissions:
+  fawayadvancement.admin:
+    default: op
+  fawayadvancement.use:
+    default: true

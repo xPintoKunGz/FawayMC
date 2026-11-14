@@ -1,0 +1,28 @@
+name: FawayMC-Luckyblock
+version: '1.0'
+main: org.kcm.bloomery.fawaymc.luckyblock.Global
+api-version: '26.3'
+description: Mystery Box + Cosmetics for FawayMC Lobby
+authors: [Bloomery Network Team, FawayMC Team, xPintoKunG_Z, Peak4567]
+softdepend: [PlaceholderAPI, ProtocolLib]
+
+commands:
+  luckybox:
+    description: Open lucky block vault
+    usage: /luckybox
+    aliases: [lb, vault, luckyblocks]
+    permission: luckyblock.player
+  luckyadmin:
+    description: Admin commands for lucky blocks
+    usage: /luckyadmin <give|givecosmetic|removecosmetic|clearallcosmetics|addcoins|removecoins|setcoins|removebox|clearbox|clearall|list|reload|addchest|removechest|listchests>
+    permission: luckyblock.admin
+    aliases: [lba, lbadmin]
+  cosmetics:
+    description: Open cosmetics menu
+    usage: /cosmetics
+    aliases: [cos, cosmetic]
+    permission: luckyblock.player
+  cosmeticshop:
+    description: Open the cosmetic shop
+    aliases: [cshop]
+    permission: luckyblock.player

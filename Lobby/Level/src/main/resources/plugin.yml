@@ -1,0 +1,25 @@
+name: FawayMC-Level
+version: '1.0'
+main: org.kcm.bloomery.fawaymc.level.Global
+api-version: '26.3'
+softdepend: [PlaceholderAPI]
+authors: [ Bloomery Network Team, FawayMC Team, xPintoKunG_Z, Peak4567 ]
+
+commands:
+  level:
+    description: View your level
+    usage: /level
+    aliases: [lvl, mylevel]
+  leveladmin:
+    description: Admin level commands
+    usage: /leveladmin <addexp|setlevel|setexp|get|reload>
+    aliases: [lvladmin, la]
+    permission: fawaylevel.admin
+
+permissions:
+  fawaylevel.admin:
+    default: op
+    description: Admin access for level commands
+  fawaylevel.tab.show:
+    default: true
+    description: Show level in tablist

@@ -1,0 +1,1007 @@
+luckyblock:
+  enabled: true
+
+# Holograms + Chests
+vault:
+  max_boxes: 1000
+  chest_locations: []
+  hologram:
+    enabled: true
+    height_offset: 2
+    line_spacing: 0.28
+    lines:
+      - "&6&l✦ &e&l&nLUCKY VAULT&e&l &6&l✦"
+      - "&fRight-click to open!"
+      - ""
+      - "&7&oOpen boxes to unlock cosmetics!"
+  actionbar:
+    enabled: false
+    update_ticks: 20          # อัปเดตทุก 1 วินาที
+    message: "&6&lLucky Boxes &8» &fCommon: &a{common} &f| Rare: &b{rare} &f| Epic: &5{epic} &f| Leg: &6{legendary} &f| Mythic: &c{mythic}"
+  animation:
+    enabled: true
+    check_radius: 10
+    update_tier_ticks: 20
+    tiers:
+      # ══════ Empty — ไม่มีกล่อง ══════
+      empty:
+        min_boxes: 0
+        max_boxes: 0
+        layers:
+          - type: "RING"
+            particle: "ENCHANT"
+            count: 3
+            radius: 1.0
+            height: 0.2
+            interval_ticks: 15
+
+      # ══════ Low — 1-4 กล่อง ══════
+      low:
+        min_boxes: 1
+        max_boxes: 4
+        layers:
+          - type: "RING"
+            particle: "ENCHANT"
+            count: 4
+            radius: 1.2
+            height: 0.2
+            interval_ticks: 12
+          # ★ ใหม่: หัวใจลอยเบาๆ
+          - type: "FOUNTAIN"
+            particle: "HEART"
+            count: 2
+            radius: 0.6
+            height: 1.0
+            interval_ticks: 30
+
+      # ══════ Medium — 5-19 กล่อง ══════
+      medium:
+        min_boxes: 5
+        max_boxes: 19
+        layers:
+          - type: "RING"
+            particle: "ENCHANT"
+            count: 5
+            radius: 1.3
+            height: 0.2
+            interval_ticks: 10
+          # ★ ใหม่: เวทมนตร์ม่วง tornado เล็ก
+          - type: "TORNADO"
+            particle: "SPELL_WITCH"
+            count: 4
+            radius: 0.8
+            height: 1.2
+            interval_ticks: 12
+          # ★ ใหม่: เมฆลอยเป็นวงโคจร
+          - type: "ORBIT"
+            particle: "CLOUD"
+            count: 3
+            radius: 1.5
+            height: 0.9
+            interval_ticks: 15
+
+      # ══════ High — 20-49 กล่อง ══════
+      high:
+        min_boxes: 20
+        max_boxes: 49
+        layers:
+          - type: "RING"
+            particle: "ENCHANT"
+            count: 6
+            radius: 1.4
+            height: 0.2
+            interval_ticks: 8
+          - type: "TORNADO"
+            particle: "PORTAL"
+            count: 5
+            radius: 1.0
+            height: 1.5
+            interval_ticks: 10
+          # ★ ใหม่: เปลวไฟสีฟ้า spiral
+          - type: "SPIRAL"
+            particle: "SOUL_FIRE_FLAME"
+            count: 4
+            radius: 0.7
+            height: 1.0
+            interval_ticks: 10
+          # ★ ใหม่: แท่งแสง helix
+          - type: "HELIX"
+            particle: "END_ROD"
+            count: 4
+            radius: 1.4
+            height: 1.3
+            interval_ticks: 12
+
+      # ══════ Legendary — 50+ กล่อง ══════
+      legendary:
+        min_boxes: 50
+        max_boxes: 999999
+        layers:
+          - type: "RING"
+            particle: "ENCHANT"
+            count: 6
+            radius: 1.5
+            height: 0.2
+            interval_ticks: 8
+          # ★ ใหม่: คลื่นเปลวไฟ
+          - type: "WAVE"
+            particle: "FLAME"
+            count: 5
+            radius: 1.3
+            height: 0.3
+            interval_ticks: 10
+          - type: "TORNADO"
+            particle: "PORTAL"
+            count: 6
+            radius: 1.0
+            height: 1.5
+            interval_ticks: 8
+          # ★ ใหม่: totem (สีทอง) spiral
+          - type: "SPIRAL"
+            particle: "TOTEM_OF_UNDYING"
+            count: 4
+            radius: 0.8
+            height: 1.0
+            interval_ticks: 12
+          - type: "HELIX"
+            particle: "END_ROD"
+            count: 4
+            radius: 1.3
+            height: 1.2
+            interval_ticks: 12
+          # ★ ใหม่: ดอกไม้ไฟ burst (นานๆ ครั้ง)
+          - type: "BURST"
+            particle: "FIREWORK"
+            count: 8
+            radius: 0.6
+            height: 0.8
+            interval_ticks: 30
+
+# Box Types
+boxes:
+  common:
+    display_name: "&7&lCommon Box"
+    material: "LIGHT_GRAY_SHULKER_BOX"
+    rarity: common
+    menu_slot: 20
+    glow: false
+    loot_table: "common"
+  rare:
+    display_name: "&9&lRare Box"
+    material: "BLUE_SHULKER_BOX"
+    rarity: rare
+    menu_slot: 21
+    glow: false
+    loot_table: "rare"
+  epic:
+    display_name: "&5&lEpic Box"
+    material: "PURPLE_SHULKER_BOX"
+    rarity: epic
+    menu_slot: 22
+    glow: false
+    loot_table: "epic"
+  legendary:
+    display_name: "&6&lLegendary Box"
+    material: "YELLOW_SHULKER_BOX"
+    rarity: legendary
+    menu_slot: 23
+    glow: true
+    loot_table: "legendary"
+  mythic:
+    display_name: "&c&lMythic Box"
+    material: "RED_SHULKER_BOX"
+    rarity: mythic
+    menu_slot: 24
+    glow: true
+    loot_table: "mythic"
+
+# Main Vault Menu
+menu:
+  title: "&8&l✦ &6&lLucky Vault &8&l✦"
+  size: 45
+  border:
+    material: "BLACK_STAINED_GLASS_PANE"
+    name: " "
+  info_slot: 40
+  info_material: "BOOK"
+  info_name: "&eℹ &lVault Info"
+  info_lore:
+    - "&7Open your lucky blocks here!"
+    - "&7Each box contains random rewards."
+    - ""
+    - "&7Higher tiers give better loot!"
+
+# Rarities
+rarities:
+  common:
+    weight: 60
+    color: "&7"
+    name: "Common"
+  rare:
+    weight: 25
+    color: "&9"
+    name: "Rare"
+  epic:
+    weight: 10
+    color: "&5"
+    name: "Epic"
+  legendary:
+    weight: 4
+    color: "&6"
+    name: "Legendary"
+  mythic:
+    weight: 1
+    color: "&c"
+    name: "Mythic"
+
+# ================================
+# Rewards Pool
+# ================================
+rewards:
+  # ═══════════════════════════════════════════════════════════
+  # COINS
+  # ═══════════════════════════════════════════════════════════
+  coins_100:
+    type: COINS
+    amount: 100
+    rarity: common
+    display:
+      material: "GOLD_NUGGET"
+      name: "&7&l100 Coins"
+
+  coins_250:
+    type: COINS
+    amount: 250
+    rarity: common
+    display:
+      material: "GOLD_NUGGET"
+      name: "&7&l250 Coins"
+
+  coins_500:
+    type: COINS
+    amount: 500
+    rarity: rare
+    display:
+      material: "GOLD_INGOT"
+      name: "&9&l500 Coins"
+
+  coins_1000:
+    type: COINS
+    amount: 1000
+    rarity: epic
+    display:
+      material: "GOLD_BLOCK"
+      name: "&5&l1000 Coins"
+
+  coins_2500:
+    type: COINS
+    amount: 2500
+    rarity: legendary
+    display:
+      material: "GOLD_BLOCK"
+      name: "&6&l2500 Coins"
+
+  coins_5000:
+    type: COINS
+    amount: 5000
+    rarity: mythic
+    display:
+      material: "NETHERITE_INGOT"
+      name: "&c&l5000 Coins"
+
+  # ═══════════════════════════════════════════════════════════
+  # TRAILS
+  # ═══════════════════════════════════════════════════════════
+  cosmetic_heart_trail:
+    type: COSMETIC
+    cosmetic_id: heart_trail
+    rarity: rare
+    display:
+      material: "HEART_OF_THE_SEA"
+      name: "&9&lHeart Trail"
+
+  cosmetic_flame_trail:
+    type: COSMETIC
+    cosmetic_id: flame_trail
+    rarity: epic
+    display:
+      material: "BLAZE_POWDER"
+      name: "&5&lFlame Trail"
+
+  cosmetic_bubble_trail:
+    type: COSMETIC
+    cosmetic_id: bubble_trail
+    rarity: common
+    display:
+      material: "WATER_BUCKET"
+      name: "&7&lBubble Trail"
+
+  cosmetic_note_trail:
+    type: COSMETIC
+    cosmetic_id: note_trail
+    rarity: common
+    display:
+      material: "NOTE_BLOCK"
+      name: "&f&lNote Trail"
+
+  cosmetic_enchantment_trail:
+    type: COSMETIC
+    cosmetic_id: enchantment_trail
+    rarity: rare
+    display:
+      material: "ENCHANTED_BOOK"
+      name: "&9&lEnchantment Trail"
+
+  cosmetic_slime_trail:
+    type: COSMETIC
+    cosmetic_id: slime_trail
+    rarity: rare
+    display:
+      material: "SLIME_BALL"
+      name: "&a&lSlime Trail"
+
+  cosmetic_lightning_trail:
+    type: COSMETIC
+    cosmetic_id: lightning_trail
+    rarity: epic
+    display:
+      material: "LIGHTNING_ROD"
+      name: "&5&lLightning Trail"
+
+  cosmetic_end_rod_trail:
+    type: COSMETIC
+    cosmetic_id: end_rod_trail
+    rarity: epic
+    display:
+      material: "END_ROD"
+      name: "&d&lEnd Rod Trail"
+
+  cosmetic_dragon_breath_trail:
+    type: COSMETIC
+    cosmetic_id: dragon_breath_trail
+    rarity: legendary
+    display:
+      material: "DRAGON_BREATH"
+      name: "&6&lDragon Breath Trail"
+
+  cosmetic_totem_wings_trail:
+    type: COSMETIC
+    cosmetic_id: totem_wings_trail
+    rarity: mythic
+    display:
+      material: "TOTEM_OF_UNDYING"
+      name: "&c&lTotem Wings Trail"
+
+  # ═══════════════════════════════════════════════════════════
+  # HATS
+  # ═══════════════════════════════════════════════════════════
+  cosmetic_diamond_hat:
+    type: COSMETIC
+    cosmetic_id: diamond_hat
+    rarity: legendary
+    display:
+      material: "DIAMOND_BLOCK"
+      name: "&6&lDiamond Crown"
+
+  cosmetic_mythic_crown:
+    type: COSMETIC
+    cosmetic_id: mythic_crown
+    rarity: mythic
+    display:
+      material: "NETHERITE_BLOCK"
+      name: "&c&lMythic Crown"
+
+  cosmetic_oak_log_helmet:
+    type: COSMETIC
+    cosmetic_id: oak_log_helmet
+    rarity: common
+    display:
+      material: "OAK_LOG"
+      name: "&7&lOak Log Helmet"
+
+  cosmetic_golden_helmet:
+    type: COSMETIC
+    cosmetic_id: golden_helmet
+    rarity: rare
+    display:
+      material: "GOLD_BLOCK"
+      name: "&9&lGolden Helmet"
+
+  cosmetic_slime_cube:
+    type: COSMETIC
+    cosmetic_id: slime_cube
+    rarity: rare
+    display:
+      material: "SLIME_BLOCK"
+      name: "&a&lSlime Cube"
+
+  cosmetic_tnt_cap:
+    type: COSMETIC
+    cosmetic_id: tnt_cap
+    rarity: epic
+    display:
+      material: "TNT"
+      name: "&5&lTNT Cap"
+
+  cosmetic_wither_skeleton_skull:
+    type: COSMETIC
+    cosmetic_id: wither_skeleton_skull
+    rarity: epic
+    display:
+      material: "WITHER_SKELETON_SKULL"
+      name: "&5&lWither Skeleton Skull"
+
+  cosmetic_beacon_crown:
+    type: COSMETIC
+    cosmetic_id: beacon_crown
+    rarity: legendary
+    display:
+      material: "BEACON"
+      name: "&6&lBeacon Crown"
+
+  cosmetic_dragon_head:
+    type: COSMETIC
+    cosmetic_id: dragon_head
+    rarity: mythic
+    display:
+      material: "DRAGON_HEAD"
+      name: "&c&lDragon Head"
+
+  # ═══════════════════════════════════════════════════════════
+  # GADGETS
+  # ═══════════════════════════════════════════════════════════
+  cosmetic_firework_gadget:
+    type: COSMETIC
+    cosmetic_id: firework_gadget
+    rarity: epic
+    display:
+      material: "FIREWORK_ROCKET"
+      name: "&5&lFirework Gadget"
+
+  cosmetic_snowball_shooter:
+    type: COSMETIC
+    cosmetic_id: snowball_shooter
+    rarity: common
+    display:
+      material: "SNOWBALL"
+      name: "&f&lSnowball Shooter"
+
+  cosmetic_grappling_hook:
+    type: COSMETIC
+    cosmetic_id: grappling_hook
+    rarity: rare
+    display:
+      material: "FISHING_ROD"
+      name: "&9&lGrappling Hook"
+
+  cosmetic_bat_blaster:
+    type: COSMETIC
+    cosmetic_id: bat_blaster
+    rarity: rare
+    display:
+      material: "BAT_SPAWN_EGG"
+      name: "&9&lBat Blaster"
+
+  cosmetic_paintball_gun:
+    type: COSMETIC
+    cosmetic_id: paintball_gun
+    rarity: epic
+    display:
+      material: "FIREWORK_STAR"
+      name: "&5&lPaintball Gun"
+
+  cosmetic_tnt_launcher:
+    type: COSMETIC
+    cosmetic_id: tnt_launcher
+    rarity: epic
+    display:
+      material: "TNT"
+      name: "&5&lTNT Launcher"
+
+  cosmetic_ender_pearl_cannon:
+    type: COSMETIC
+    cosmetic_id: ender_pearl_cannon
+    rarity: legendary
+    display:
+      material: "ENDER_EYE"
+      name: "&6&lEnder Pearl Cannon"
+
+  cosmetic_jetpack:
+    type: COSMETIC
+    cosmetic_id: jetpack
+    rarity: mythic
+    display:
+      material: "FIREWORK_ROCKET"
+      name: "&c&lJetpack"
+
+# ================================
+# Broadcast - ประกาศแชทเมื่อได้ Cosmetic ระดับสูง
+# ================================
+broadcast:
+  enabled: true
+  rarities:
+    legendary: true
+    mythic: true
+    # epic: false
+  format: "&e{player} &ajust obtained {rarity} &afrom {box}"
+  sound:
+    enabled: true
+    name: "ENTITY_ENDER_DRAGON_GROWL"
+    volume: 1.0
+    pitch: 1.0
+
+# Loot Tables
+loot_tables:
+  common:
+    rewards:
+      - coins_100
+      - coins_250
+      - cosmetic_bubble_trail
+      - cosmetic_note_trail
+      - cosmetic_oak_log_helmet
+      - cosmetic_snowball_shooter
+
+  rare:
+    rewards:
+      - coins_250
+      - coins_500
+      - cosmetic_heart_trail
+      - cosmetic_enchantment_trail
+      - cosmetic_slime_trail
+      - cosmetic_golden_helmet
+      - cosmetic_slime_cube
+      - cosmetic_grappling_hook
+      - cosmetic_bat_blaster
+
+  epic:
+    rewards:
+      - coins_500
+      - coins_1000
+      - cosmetic_flame_trail
+      - cosmetic_firework_gadget
+      - cosmetic_lightning_trail
+      - cosmetic_end_rod_trail
+      - cosmetic_tnt_cap
+      - cosmetic_wither_skeleton_skull
+      - cosmetic_paintball_gun
+      - cosmetic_tnt_launcher
+
+  legendary:
+    rewards:
+      - coins_1000
+      - coins_2500
+      - cosmetic_diamond_hat
+      - cosmetic_dragon_breath_trail
+      - cosmetic_beacon_crown
+      - cosmetic_ender_pearl_cannon
+
+  mythic:
+    rewards:
+      - coins_5000
+      - cosmetic_mythic_crown
+      - cosmetic_totem_wings_trail
+      - cosmetic_dragon_head
+      - cosmetic_jetpack
+
+# Spin Animation
+opening:
+  gui_title: "&8&l✦ &e&lOpening... &8&l✦"
+  gui_size: 27
+  multi_title: "&8&l✦ &e&lOpening &f{amount}x &e&lBoxes &8&l✦"
+  multi_spin_duration_ticks: 80     # spin เร็วขึ้น (x5/x10/x25)
+  multi_reveal_hold_ticks: 80       # แสดงผลทั้งหมด 4 วินาทีก่อนปิด
+  border_material: "BLACK_STAINED_GLASS_PANE"
+  spin_slots: [10, 11, 12, 13, 14, 15, 16]
+  result_slot: 13
+  spin_duration_ticks: 120
+  spin_update_ticks: 2
+  reward_delay_ticks: 40
+  physical:
+    box_distance: 2.0
+    box_height: 2.5
+    box_scale: 0.6
+    item_scale: 0.4
+    spin_duration_ticks: 200
+    fly_duration_ticks: 40
+    spin_radius: 1.5
+    spin_height_offset: 0.3
+    item_count: 8
+    rotation_speed: 0.08
+    vault_chest_search_radius: 15.0
+    # ความสูงของกล่อง luckyblock ที่ spawn เหนือ enderchest
+    box_height_above_chest: 2.0
+    # เสียงวนตอน items orbit
+    orbit_sound:
+      enabled: true
+      sound: BLOCK_NOTE_BLOCK_CHIME
+      interval_ticks: 4
+      volume: 0.4
+      pitch: 1.6
+    # เสียงเตือนก่อนพุ่งเข้าตัว
+    warn_sound:
+      enabled: true
+      sound: ENTITY_WARDEN_SONIC_CHARGE
+      countdown_start_ticks: 12   # เริ่มเตือน 12 tick ก่อนพุ่ง
+      beeps: 4                    # จำนวน beeps
+    # ★★★ NEW: Box hologram ★★★
+      box_hologram:
+        enabled: true
+        height: 0.9                              # ความสูงเหนือกล่อง
+        text: "&e&l✦ &f{box_name} &e&l✦"         # {box_name} = display_name ของกล่อง
+    # ★★★ NEW: Item hologram ★★★
+      item_hologram:
+        enabled: true
+        height: 0.55                             # ความสูงเหนือไอเท็มแต่ละชิ้น
+        scale: 0.8                               # ขนาดตัวอักษร (1.0 = ปกติ)
+    # ★★★ NEW: Phase timings ★★★
+      freeze_pause_ticks: 20                     # หยุดนิ่งหลัง lock winner (ไอเท็ม glow)
+      move_to_center_ticks: 25                   # เวลาย้าย winner เข้ากลาง
+      center_pause_ticks: 20
+
+# ================================
+# Gadget Settings
+# ================================
+gadget:
+  hotbar_slot: 5                  # slot ใน hotbar (0-8) สำหรับ gadget
+  message_cooldown_ms: 1000       # throttle ข้อความ cooldown (ms)
+  cooldown_bar:
+    enabled: true
+    type: "BOSS_BAR"              # "BOSS_BAR" หรือ "ACTION_BAR"
+    color: "RED"                  # BOSS_BAR: PINK, BLUE, RED, GREEN, YELLOW, PURPLE, WHITE
+    style: "SEGMENTED_10"          # BOSS_BAR: SOLID, SEGMENTED_6, SEGMENTED_10, SEGMENTED_12, SEGMENTED_20
+    title: "&c&l✦ &fGadget Cooldown &c&l✦ &7(&e{remaining}s&7)"
+    action_bar:
+      bar_length: 20              # จำนวนแท่ง
+      filled_char: "|"
+      empty_char: "|"
+      filled_color: "&a"
+      empty_color: "&c"
+      message: "{bar} &e{remaining}s"
+
+# ================================
+# Cosmetics
+# ================================
+cosmetics:
+  # ══════ TRAILS ══════
+  heart_trail:
+    type: TRAIL
+    rarity: rare
+    display_name: "&9&lHeart Trail"
+    material: "HEART_OF_THE_SEA"
+    particle: "HEART"
+    particle_count: 3
+    particle_offset: 0.3
+
+  flame_trail:
+    type: TRAIL
+    rarity: epic
+    display_name: "&5&lFlame Trail"
+    material: "BLAZE_POWDER"
+    particle: "FLAME"
+    particle_count: 5
+    particle_offset: 0.4
+
+  bubble_trail:
+    type: TRAIL
+    rarity: common
+    display_name: "&7&lBubble Trail"
+    material: "WATER_BUCKET"
+    particle: "BUBBLE"
+    particle_count: 4
+    particle_offset: 0.3
+
+  note_trail:
+    type: TRAIL
+    display_name: "&f&lNote Trail"
+    material: "NOTE_BLOCK"
+    particle: "NOTE"
+    particle_count: 3
+    particle_offset: 0.4
+
+  enchantment_trail:
+    type: TRAIL
+    rarity: rare
+    display_name: "&9&lEnchantment Trail"
+    material: "ENCHANTED_BOOK"
+    particle: "ENCHANT"
+    particle_count: 5
+    particle_offset: 0.4
+
+  slime_trail:
+    type: TRAIL
+    rarity: rare
+    display_name: "&a&lSlime Trail"
+    material: "SLIME_BALL"
+    particle: "SNEEZE"
+    particle_count: 3
+    particle_offset: 0.3
+
+  lightning_trail:
+    type: TRAIL
+    rarity: epic
+    display_name: "&5&lLightning Trail"
+    material: "LIGHTNING_ROD"
+    particle: "ELECTRIC_SPARK"
+    particle_count: 6
+    particle_offset: 0.35
+
+  end_rod_trail:
+    type: TRAIL
+    rarity: epic
+    display_name: "&d&lEnd Rod Trail"
+    material: "END_ROD"
+    particle: "END_ROD"
+    particle_count: 4
+    particle_offset: 0.3
+
+  dragon_breath_trail:
+    type: TRAIL
+    rarity: legendary
+    display_name: "&6&lDragon Breath Trail"
+    material: "DRAGON_BREATH"
+    particle: "DRAGON_BREATH"
+    particle_count: 6
+    particle_offset: 0.4
+
+  totem_wings_trail:
+    type: TRAIL
+    rarity: mythic
+    display_name: "&c&lTotem Wings Trail"
+    material: "TOTEM_OF_UNDYING"
+    particle: "TOTEM_OF_UNDYING"
+    particle_count: 5
+    particle_offset: 0.4
+
+  # ══════ HATS ══════
+  diamond_hat:
+    type: HAT
+    rarity: legendary
+    display_name: "&6&lDiamond Crown"
+    material: "DIAMOND_BLOCK"
+
+  mythic_crown:
+    type: HAT
+    rarity: mythic
+    display_name: "&c&lMythic Crown"
+    material: "NETHERITE_BLOCK"
+
+  oak_log_helmet:
+    type: HAT
+    rarity: common
+    display_name: "&7&lOak Log Helmet"
+    material: "OAK_LOG"
+
+  golden_helmet:
+    type: HAT
+    rarity: rare
+    display_name: "&9&lGolden Helmet"
+    material: "GOLD_BLOCK"
+
+  slime_cube:
+    type: HAT
+    rarity: rare
+    display_name: "&a&lSlime Cube"
+    material: "SLIME_BLOCK"
+
+  tnt_cap:
+    type: HAT
+    rarity: epic
+    display_name: "&5&lTNT Cap"
+    material: "TNT"
+
+  wither_skeleton_skull:
+    type: HAT
+    rarity: epic
+    display_name: "&5&lWither Skeleton Skull"
+    material: "WITHER_SKELETON_SKULL"
+
+  beacon_crown:
+    type: HAT
+    rarity: legendary
+    display_name: "&6&lBeacon Crown"
+    material: "BEACON"
+
+  dragon_head:
+    type: HAT
+    rarity: mythic
+    display_name: "&c&lDragon Head"
+    material: "DRAGON_HEAD"
+
+  # ══════ GADGETS ══════
+  firework_gadget:
+    type: GADGET
+    rarity: epic
+    display_name: "&5&lFirework Gadget"
+    material: "FIREWORK_ROCKET"
+    cooldown_seconds: 5
+    action: "FIREWORK"
+    require_item: false
+
+  snowball_shooter:
+    type: GADGET
+    rarity: common
+    display_name: "&f&lSnowball Shooter"
+    material: "SNOWBALL"
+    cooldown_seconds: 3
+    action: "SNOWBALL"
+    require_item: false
+
+  grappling_hook:
+    type: GADGET
+    rarity: rare
+    display_name: "&9&lGrappling Hook"
+    material: "FISHING_ROD"
+    cooldown_seconds: 4
+    action: "GRAPPLE"
+    require_item: false
+
+  bat_blaster:
+    type: GADGET
+    rarity: rare
+    display_name: "&9&lBat Blaster"
+    material: "BAT_SPAWN_EGG"
+    cooldown_seconds: 6
+    action: "BAT_BLASTER"
+    require_item: false
+
+  paintball_gun:
+    type: GADGET
+    rarity: epic
+    display_name: "&5&lPaintball Gun"
+    material: "FIREWORK_STAR"
+    cooldown_seconds: 3
+    action: "PAINTBALL"
+    require_item: false
+
+  tnt_launcher:
+    type: GADGET
+    rarity: epic
+    display_name: "&5&lTNT Launcher"
+    material: "TNT"
+    cooldown_seconds: 8
+    action: "TNT_LAUNCHER"
+    require_item: false
+
+  ender_pearl_cannon:
+    type: GADGET
+    rarity: legendary
+    display_name: "&6&lEnder Pearl Cannon"
+    material: "ENDER_EYE"
+    cooldown_seconds: 5
+    action: "ENDER_PEARL"
+    require_item: false
+
+  jetpack:
+    type: GADGET
+    rarity: mythic
+    display_name: "&c&lJetpack"
+    material: "FIREWORK_ROCKET"
+    cooldown_seconds: 15
+    action: "JETPACK"
+    require_item: false
+
+# ================================
+# GUI Border (ทึบ หนา)
+# ================================
+gui:
+  title: "&8&l✦ &d&lCOSMETICS &8&l✦"
+  border:
+    material: "BLACK_STAINED_GLASS_PANE"     # ★ ทึบ หนา (ไม่ใช่ glass)
+    name: "&r"                  # ★ ตัวอักษร block หนา
+    rows: [0, 5]
+  rows:
+    trail_start: 10
+    hat_start: 19
+    gadget_start: 28
+  controls:
+    vault_slot: 46
+    reset_slot: 48
+    summary_slot: 49
+    shop_slot: 50                  # ★ ปุ่ม shop
+    info_slot: 52
+  equip_message:
+    enabled: true
+    throttle_ms: 500
+    equip_format: "&a&l✔ &fEquipped &e{name}"
+    unequip_format: "&c&l✘ &fUnequipped &e{name}"
+  coming_soon:
+    pets:
+      name: "&a&l✦ &2&lPETS &a&l✦"
+      material: "BARRIER"
+      description: "&7Collect pets to follow you!"
+    wings:
+      name: "&b&l✦ &3&lWINGS &b&l✦"
+      material: "BARRIER"
+      description: "&7Cosmetic wings for your back!"
+    3d_heads:
+      name: "&e&l✦ &6&l3D HEADS &e&l✦"
+      material: "BARRIER"
+      description: "&7Wear 3D modeled heads!"
+    cloaks:
+      name: "&d&l✦ &5&lCLOAKS &d&l✦"
+      material: "BARRIER"
+      description: "&7Cosmetic cloaks to show off!"
+
+# ================================
+# Shop
+# ================================
+shop:
+  enabled: true
+  title: "&8&l✦ &d&lCOSMETIC SHOP &8&l✦"
+  shortcut:
+    vault_slot: 41
+  border:
+    material: "BLACK_STAINED_GLASS_PANE"
+  info:
+    material: "BOOK"
+    name: "&e&lShop Info"
+    lore:
+      - "&7Your Balance: &6{balance} coins"
+      - ""
+      - "&fBuy &dCosmetics &fhere!"
+      - "&7Only &7Common, &aRare &7& &5Epic &7tiers available."
+      - "&cLegendary &7& &cMythic &7require boxes!"
+      - ""
+      - "&7Earn coins by opening boxes."
+  back:
+    material: "ARROW"
+    name: "&a← Back"
+    lore:
+      - "&7Return to {origin}"
+  items:
+    cosmetic_heart_trail:
+      material: "HEART_OF_THE_SEA"
+      name: "&9&lHeart Trail"
+      price: 3000
+      cosmetic_id: "heart_trail"
+    cosmetic_flame_trail:
+      material: "BLAZE_POWDER"
+      name: "&5&lFlame Trail"
+      price: 5000
+      cosmetic_id: "flame_trail"
+    cosmetic_firework_gadget:
+      material: "FIREWORK_ROCKET"
+      name: "&5&lFirework Gadget"
+      price: 4000
+      cosmetic_id: "firework_gadget"
+
+# ================================
+# Messages
+# ================================
+messages:
+  prefix: ""
+  no_permission: "&cYou don't have permission!"
+  no_boxes: "&cYou have no &e{type}&c boxes!"
+  reward_received: "&aYou received &e{reward} &a!"
+  box_opened: "&aOpened 1x &e{type} &aand got: &e{reward}"
+  cosmetic_equipped: "&aEquipped &e{cosmetic}"
+  cosmetic_unequipped: "&7Unequipped &e{cosmetic}"
+  cosmetic_not_owned: "&cYou don't own this cosmetic!"
+  gadget_cooldown: "&cCooldown: &e{seconds}s"
+  box_given: "&aGave &e{amount}x {type} &ato &e{player}"
+  box_given_to_you: "&aYou received &e{amount}x {type}!"
+  reload_success: "&aConfig reloaded!"
+  invalid_args: "&cInvalid arguments!"
+  player_not_found: "&cPlayer not found!"
+  box_type_not_found: "&cBox type not found: {type}"
+  # Placeholders: {cosmetic}, {rarity}, {type}
+  cosmetic_duplicate: "&cYou already own this &e{type}&e: &e{cosmetic} &7({rarity}&7)&c!"
+  box_opened_multi: "&aOpened &e{amount}x {type}&a and got:"
+  shop:
+    no_coins: "&cYou need &e{price} &ccoins but have &e{balance}&c!"
+    purchased: "&aPurchased &e{item} &afor &6{price} coins&a!"
+    already_owned: "&cYou already own this cosmetic!"
+    disabled: "&cShop is disabled!"
+  coins:
+    received: "&a+&6{amount} &acoins! &7(Balance: &e{balance}&7)"
+    spent: "&c-&6{amount} &ccoins! &7(Balance: &e{balance}&7)"
+  admin:
+    coins_added: "&aAdded &e{amount} &acoins to &f{player} &7(Now: &e{balance}&7)"
+    coins_removed: "&cRemoved &e{amount} &ccoins from &f{player} &7(Now: &e{balance}&7)"
+    coins_set: "&aSet &f{player}&a's balance to &e{balance} &acoins"
+    coins_cap: "&cCannot exceed max coins (&e{max}&c)!"
+    invalid_amount: "&cInvalid amount!"
+    amount_negative: "&cAmount must be positive!"
+    usage_addcoins: "&eUsage: /luckyadmin addcoins <player> <amount>"
+    usage_removecoins: "&eUsage: /luckyadmin removecoins <player> <amount>"
+    usage_setcoins: "&eUsage: /luckyadmin setcoins <player> <amount>"

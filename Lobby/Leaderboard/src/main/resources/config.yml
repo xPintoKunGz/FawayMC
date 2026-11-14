@@ -1,0 +1,68 @@
+# ═══════════════════════════════════════════════════════════
+# FawayLeaderboard Configuration
+# ═══════════════════════════════════════════════════════════
+
+settings:
+  refresh_interval_seconds: 120
+  cache_save_minutes: 5
+  import_on_startup: true
+  min_value: 1                        # ค่าต่ำสุดที่ติดอันดับ (กัน 0 ขึ้น)
+  top_size: 10                        # จำนวน top ที่ cache
+
+# ═══════════════════════════════════════════════════════════
+# Leaderboards (กำหนดประเภทที่เปิดใช้)
+# ═══════════════════════════════════════════════════════════
+format:
+  line: "&e{rank_padded} &f{name} &8{dots} &e{value}"
+  total_width: 32
+  dots_char: "."
+  dots_color: "&8"
+
+leaderboards:
+  advancement:
+    enabled: true
+    format: "&e{rank_padded} &f{name} &8{dots} &e{value}"
+    empty: "&7- &f- &8... &7-"
+
+  level:
+    enabled: true
+    format: "&6#{position} &e{player} &7- &bLevel {value}"
+    empty: "&7No data yet"
+
+  coins:
+    enabled: true
+    format: "&6#{position} &e{player} &7- &6{value} coins"
+    empty: "&7No data yet"
+
+  daily:
+    enabled: true
+    format: "&6#{position} &e{player} &7- &d{value} days streak"
+    empty: "&7No data yet"
+
+# ═══════════════════════════════════════════════════════════
+# Providers — source plugins ที่จะดึงข้อมูล
+# ═══════════════════════════════════════════════════════════
+providers:
+  advancement:
+    plugin_names: ["FawayMC-Advancement", "FawayAdvancement", "Advancement"]
+    data_file: "playerdata.yml"
+    yaml_path: "players"
+    # ดึงจำนวน unlocked advancement ทั้งหมด
+
+  level:
+    plugin_names: ["FawayLevel", "FawayMC-Level", "FawayMCLevel"]
+    data_file: "playerdata.yml"
+    yaml_path: "players"
+    yaml_field: "level"
+
+  coins:
+    plugin_names: ["FawayMC-Luckyblock", "Luckyblock", "LuckyBlock", "luckyblock"]
+    data_file: "playerdata.yml"
+    yaml_path: "players"
+    yaml_field: "coins"
+
+  daily:
+    plugin_names: ["FawayMC-Daily", "FawayDaily", "Daily"]
+    data_file: "playerdata.yml"
+    yaml_path: "players"
+    yaml_field: "streak_days"

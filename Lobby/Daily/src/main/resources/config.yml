@@ -1,0 +1,206 @@
+# ================================
+# Daily Rewards Configuration
+# ================================
+settings:
+  # เวลา (0-23) ที่ "วันใหม่" เริ่ม (local timezone)
+  reset_hour: 4
+  # จำนวนวันต่อ 1 cycle (day 1 → 7 → reset)
+  cycle_length: 7
+
+# ================================
+# GUI Settings
+# ================================
+gui:
+  title: "&8&l✦ &e&lDAILY REWARDS &8&l✦"
+  border:
+    material: "BLACK_STAINED_GLASS_PANE"
+    name: " "
+  filler:
+    material: "GRAY_STAINED_GLASS_PANE"
+    name: " "
+
+  # ★ Custom heads (optional)
+  # ใส่ base64 texture จาก https://minecraft-heads.com/custom-heads/
+  # ถ้าเว้นว่าง → ใช้ Material แทน
+  heads:
+    streak:
+      texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTY2MTI5MmFkYjU3NTM2NDljZTZlOTRiMjg4ZmU1NGU5NDUwZDc0YzMwNWQ0MzEwZWFhMDEyYzk1OWVkZGNjIn19fQ=="
+    rank:
+      texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjA5ZDZhMzQ4YTk5MjNlYmJiMzQyM2IxOTY5NzNkNDk1YjFhYTVjMDU2ZTRiMzUxYjEyMGQzNmQ4MzMxYTU0MiJ9fX0="
+    total:
+      texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmY1YzQzMzkwODczMmI1MTJmNjg0NjFjMTRlZjAyMGJiMmY1NWQ5NmE2MWNkMWQ0NWVhMWU3ZWE4OTlmMWE2YiJ9fX0="
+    milestone:
+      texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjMxMDU5MzFmN2I2ZGYzMjY5YjRiNGJhOWVkNzI0YmVhNmY5MzBmMTVmMDBjNmZkNTI4MTgxMjhjZTNhNTlhZiJ9fX0="
+    preview:
+      texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWY0NTI4OWM4YjEzNDZmYjI2NDRlMDhjMGM1NmYwOTZmMDExMjkxZjE5MDRkZDJlNTI2MTA5ZGNmMDlmMWM1MCJ9fX0="
+    claim:
+      texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2ZmMWE0MzkxMjExZDI1ZTE2ZDcwNmRjODAzZjU1OGRlZDEyOWY1YzU5ZTk1MjY4MjFhY2UzZDgxZGNmYWZjMCJ9fX0="
+    countdown:
+      texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDkyYjNkOTcyZTcwYzgxOWJiYTI2ZThjMWI5NWY0MzA5NjNiMTM4NTBkNjIwMjFlYzYzYjQ5YTQ5MjEzN2ZlZiJ9fX0="
+
+# ================================
+# Rank System
+# ================================
+ranks:
+  # PAPI placeholder สำหรับดึง rank
+  papi_placeholder: "%luckperms_prefix%"
+  # Fallback ถ้าหา rank ไม่เจอใน config
+  default_rank: "%luckperms_prefix%"
+
+# ================================
+# Rewards per Rank
+# - Coins ทุกวัน (scaling)
+# - Boxes: เฉพาะ common / rare / epic เท่านั้น
+#   (ไม่มี legendary/mythic → ป้องกัน economy)
+# ================================
+rewards:
+  # ─── Default (ผู้เล่นทั่วไป) ───
+  default:
+    day_1:
+      display_name: "&aDay 1"
+      icon: "CHEST_MINECART"
+      coins: 100
+    day_2:
+      display_name: "&aDay 2"
+      icon: "CHEST_MINECART"
+      coins: 150
+      boxes:
+        common: 1
+    day_3:
+      display_name: "&aDay 3"
+      icon: "CHEST_MINECART"
+      coins: 200
+      boxes:
+        common: 1
+    day_4:
+      display_name: "&eDay 4"
+      icon: "FURNACE_MINECART"
+      coins: 300
+      boxes:
+        rare: 1
+    day_5:
+      display_name: "&eDay 5"
+      icon: "FURNACE_MINECART"
+      coins: 400
+      boxes:
+        rare: 1
+    day_6:
+      display_name: "&eDay 6"
+      icon: "FURNACE_MINECART"
+      coins: 500
+      boxes:
+        epic: 1
+    day_7:
+      display_name: "&d&lDay 7 - Milestone!"
+      icon: "TNT_MINECART"
+      coins: 1000
+      boxes:
+        common: 1
+        rare: 1
+        epic: 1
+
+  # ─── VIP ───
+  vip:
+    day_1:
+      display_name: "&aDay 1"
+      icon: "CHEST_MINECART"
+      coins: 200
+      boxes:
+        common: 2
+    day_2:
+      display_name: "&aDay 2"
+      icon: "CHEST_MINECART"
+      coins: 300
+      boxes:
+        common: 2
+    day_3:
+      display_name: "&aDay 3"
+      icon: "CHEST_MINECART"
+      coins: 400
+      boxes:
+        rare: 2
+    day_4:
+      display_name: "&eDay 4"
+      icon: "FURNACE_MINECART"
+      coins: 600
+      boxes:
+        rare: 2
+    day_5:
+      display_name: "&eDay 5"
+      icon: "FURNACE_MINECART"
+      coins: 800
+      boxes:
+        epic: 2
+    day_6:
+      display_name: "&eDay 6"
+      icon: "FURNACE_MINECART"
+      coins: 1000
+      boxes:
+        epic: 2
+    day_7:
+      display_name: "&d&lDay 7 - Milestone!"
+      icon: "TNT_MINECART"
+      coins: 2000
+      boxes:
+        common: 2
+        rare: 2
+        epic: 2
+
+  # ─── MVP ───
+  mvp:
+    day_1:
+      display_name: "&aDay 1"
+      icon: "CHEST_MINECART"
+      coins: 300
+      boxes:
+        rare: 1
+    day_2:
+      display_name: "&aDay 2"
+      icon: "CHEST_MINECART"
+      coins: 450
+      boxes:
+        rare: 1
+    day_3:
+      display_name: "&eDay 3"
+      icon: "FURNACE_MINECART"
+      coins: 600
+      boxes:
+        epic: 1
+    day_4:
+      display_name: "&eDay 4"
+      icon: "FURNACE_MINECART"
+      coins: 900
+      boxes:
+        epic: 1
+    day_5:
+      display_name: "&eDay 5"
+      icon: "FURNACE_MINECART"
+      coins: 1200
+      boxes:
+        epic: 2
+    day_6:
+      display_name: "&eDay 6"
+      icon: "FURNACE_MINECART"
+      coins: 1500
+      boxes:
+        epic: 2
+    day_7:
+      display_name: "&d&lDay 7 - Milestone!"
+      icon: "TNT_MINECART"
+      coins: 3000
+      boxes:
+        common: 3
+        rare: 3
+        epic: 3
+
+# ================================
+# Messages
+# ================================
+messages:
+  prefix: "&e&lDAILY &8» &r"
+  already_claimed: "&cYou have already claimed today's reward!"
+  claimed: "&a&l✔ &aYou claimed &e{reward} &afor &eDay {day}&a!"
+  milestone_reached: "&d&l🎉 &fYou completed Day {max}! &7Streak reset for new cycle."
+  login_notify: "&e&l⭐ &fYou have a daily reward to claim! &7(/daily claim)"
+  no_rewards: "&cNo rewards configured for this rank/day."
+  reload_success: "&aConfig reloaded!"
