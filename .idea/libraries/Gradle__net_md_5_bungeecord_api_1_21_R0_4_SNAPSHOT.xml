@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: net.md-5:bungeecord-api:1.21-R0.4-SNAPSHOT" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="net.md-5" artifactId="bungeecord-api" version="1.21-R0.4-SNAPSHOT" baseVersion="1.21-R0.4-SNAPSHOT" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.md-5/bungeecord-api/1.21-R0.4-SNAPSHOT/cf21e3951181d32f3bdf4d2f15cff59cb13f58c3/bungeecord-api-1.21-R0.4-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.md-5/bungeecord-api/1.21-R0.4-SNAPSHOT/d0f19f34bd0676994db3fa91862838d8e748ad98/bungeecord-api-1.21-R0.4-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
