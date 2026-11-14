@@ -1,5 +1,0 @@
-name: FawayMC-Bungeecord
-version: '26.3'
-main: org.kcm.bloomery.fawaymc.bungee.Global
-authors: [ Bloomery Network Team, FawayMC Team, xPintoKunG_Z, Peak4567 ]
-softdepend: [ PlaceholderAPI ]
