@@ -1,0 +1,63 @@
+# FawayMC Launchpad Configuration
+
+launchpad:
+  enabled: true
+  cooldown_ms: 500              # cooldown ระหว่างการยิง (ms) — ใช้กัน spam
+  only_in_spawn_world: false    # true = ทำงานเฉพาะ world ที่ setspawn ไว้
+
+  item:
+    material: HEAVY_WEIGHTED_PRESSURE_PLATE
+    name: "&e&lLaunchpad"
+
+  # ===== Pressure Plate Launchpad =====
+  pressure_plate:
+    enabled: false
+    custom_only: false
+    block_types: []
+    launch_power: 2                # ความแรงแนวราบ (horizontal)
+    launch_height: 0.8             # ความสูงแนวตั้ง (vertical)
+    use_player_facing: true        # true = ยิงตามทิศที่ผู้เล่นหัน, false = ยิงขึ้นตรงๆ
+    require_sneak: false           # true = ต้องกด sneak (Shift) ตอนเหยียบ
+    permission: ""                 # empty = ไม่ต้องมีสิทธิ์; เช่น "global.launchpad"
+    message: []                    # empty = ไม่ส่งข้อความ
+
+    sound:
+      enabled: true
+      type: "ENTITY_FIREWORK_ROCKET_LAUNCH"
+      volume: 1.0
+      pitch: 1.0
+
+    particle:
+      enabled: true
+      type: "FIREWORK"
+      count: 30
+
+  # ===== Slime Block Launchpad =====
+  slime_block:
+    enabled: true
+    block_types:
+      - "SLIME_BLOCK"
+    launch_power: 0.0              # ความแรงแนวราบ (0 = ยิงขึ้นตรงๆ)
+    launch_height: 1.2             # ความสูงแนวตั้ง
+    use_player_facing: false       # false = ยิงขึ้นตรงๆ (ปกติของ slime)
+    min_fall_distance: 1.5         # ต้องตกสูงอย่างน้อย 1.5 blocks ถึงจะยิง
+    permission: ""                 # empty = ไม่ต้องมีสิทธิ์
+    message: ""                    # empty = ไม่ส่งข้อความ
+
+    sound:
+      enabled: true
+      type: "ENTITY_SLIME_SQUISH"
+      volume: 1.0
+      pitch: 1.0
+
+    particle:
+      enabled: true
+      type: "CLOUD"
+      count: 20
+
+messages:
+  no_permission: "&cคุณไม่มีสิทธิ์!"
+  usage: "&e/launchpad <reload|on|off|info>"
+  reload: "&aรีโหลด launchpad.yml สำเร็จ!"
+  enabled: "&aเปิดใช้งาน Launchpad แล้ว!"
+  disabled: "&cปิดใช้งาน Launchpad แล้ว!"

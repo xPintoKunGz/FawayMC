@@ -1,0 +1,15 @@
+# FawayMC World Restriction Configuration
+
+restrictions:
+  disable_nether: true
+  disable_end: true
+  disable_monsters: true
+  allowed_monster_worlds:
+    - ""
+
+messages:
+  nether_disabled: "&cระบบมิติ Nether ถูกปิดใช้งานในขณะนี้!"
+  end_disabled: "&cระบบมิติ The End ถูกปิดใช้งานในขณะนี้!"
+  no_permission: "&cคุณไม่มีสิทธิ์ใช้งานคำสั่งนี้!"
+  reload: "&aรีโหลดไฟล์ worldrestriction.yml เรียบร้อยแล้ว!"
+  usage: "&eการใช้งาน: /worldrestriction reload"

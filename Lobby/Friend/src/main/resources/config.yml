@@ -1,0 +1,98 @@
+limits:
+  max_friends: 50
+  max_pending_requests: 20
+
+notify:
+  friend_online:
+    enabled: true
+    format: "&a&l✔ &f{friend} &ais now online &7({server})"
+  friend_offline:
+    enabled: true
+    format: "&c&l✘ &f{friend} &cis now offline"
+  request_received:
+    enabled: true
+    format: "&e&l📩 &f{sender} &esent you a friend request!"
+    sound: "ENTITY_EXPERIENCE_ORB_PICKUP"
+
+gui:
+  title: "&8&l✦ &b&lFRIENDS &8&l✦"
+  size: 54
+  border:
+    material: "BLACK_STAINED_GLASS_PANE"
+    name: " "
+  filler:
+    material: "GRAY_STAINED_GLASS_PANE"
+    name: " "
+  sort:
+    mode: "online_first"    # online_first / favorite_first / alphabetical
+  pagination:
+    items_per_page: 36
+
+# ================================
+# Cross-Server Network (Phase 4)
+# ================================
+network:
+  # ★ เปิดเฉพาะตอนมี Jedis ใน classpath
+  enabled: false
+  server_name: "lobby-1"
+  redis:
+    host: "localhost"
+    port: 6379
+    password: ""
+    database: 0
+    timeout: 2000
+  bungee:
+    # เปิดสำหรับ /friend jump (ต้องมี BungeeCord/Velocity proxy)
+    enabled: true
+  sync:
+    # อัปเดตตำแหน่งผู้เล่นทุก N วินาที
+    player_location_interval: 5
+    # ถือว่า offline ถ้าไม่ได้รับ heartbeat ภายใน N วินาที
+    heartbeat_timeout: 15
+    # อายุของ pending teleport (วินาที)
+    pending_teleport_ttl: 60
+
+messages:
+  prefix: "&b&lFRIENDS &8» &r"
+  player_not_found: "&cPlayer &f{player} &cnot found!"
+  cannot_add_self: "&cYou cannot add yourself as a friend!"
+  already_friends: "&cYou are already friends with &f{player}&c!"
+  already_requested: "&cYou have already sent a request to &f{player}&c!"
+  request_sent: "&aRequest sent to &f{player}&a!"
+  request_received: "&e&l📩 &f{sender} &esent you a friend request!"
+  request_accepted: "&a&l✔ &f{friend} &aaccepted your friend request!"
+  request_denied: "&cYou denied &f{player}&c's friend request"
+  request_rejected: "&c&f{player} &cdenied your friend request"
+  friend_added: "&a&l✔ &aYou and &f{player} &aare now friends!"
+  friend_removed_self: "&c&l✘ &cRemoved &f{player} &cfrom friends"
+  friend_removed_other: "&c&l✘ &f{player} &cremoved you from friends"
+  friend_list_empty: "&7You have no friends yet. &f(/friend add <player>)"
+  friend_list_header: "&b&l✦ &fFriend List &7({count}/{max}) &b&l✦"
+  requests_disabled: "&cYou have friend requests disabled. &7(/friend toggle requests)"
+  target_requests_disabled: "&c&f{player} &chas friend requests disabled"
+  max_friends_reached: "&cYou have reached the friend limit (&f{max}&c)!"
+  max_pending_reached: "&c&f{player} &chas too many pending requests"
+  no_pending_request: "&cNo pending request from &f{player}"
+  not_friends: "&cYou are not friends with &f{player}"
+  usage_main: "&e/friend <list|add|accept|deny|remove|requests|toggle>"
+  usage_add: "&e/friend add <player>"
+  usage_accept: "&e/friend accept <player>"
+  usage_deny: "&e/friend deny <player>"
+  usage_remove: "&e/friend remove <player>"
+  usage_toggle: "&e/friend toggle <requests|notify>"
+
+  # ============ Phase 5 ============
+  cannot_send_request: "&cCannot send friend request to &f{player}&c."
+  you_blocked_target: "&cYou have blocked &f{player}&c. &7(/friend unblock {player})"
+  blocked: "&c&l✘ &cBlocked &f{player}&c."
+  unblocked: "&a&l✔ &aUnblocked &f{player}&c."
+  already_blocked: "&cYou have already blocked &f{player}&c."
+  not_blocked: "&cYou have not blocked &f{player}&c."
+  cannot_block_self: "&cYou cannot block yourself."
+  blocklist_empty: "&7You have not blocked anyone."
+  nickname_set: "&a&l✔ &aNickname for &f{player} &aset to &e{nickname}&a."
+  nickname_reset: "&a&l✔ &aNickname for &f{player} &areset."
+  usage_block: "&e/friend block <player>"
+  usage_unblock: "&e/friend unblock <player>"
+  usage_nickname: "&e/friend nickname <player> <nickname|reset>"
+  usage_msg: "&e/friend msg <player> <message>"

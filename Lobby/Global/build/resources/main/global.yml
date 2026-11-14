@@ -1,0 +1,53 @@
+# FawayMC Global Configuration
+bungee_servers:
+  - "lobby"
+  - "bedwars"
+
+# ===== Spawn Block Protection =====
+spawn_protection:
+  leaves_decay: true          # ใบไม้ร่วง/เน่า
+  block_fade: true            # น้ำแข็ง/หิมะละลาย
+  block_burn: true            # ไฟไหม้บล็อก
+  block_spread: true          # ไฟลุกลาม
+  block_ignite: true          # จุดไฟ
+  liquid_flow: false          # น้ำ/ลาวาไหล (ปิดไว้เพราะกิน performance)
+  block_grow: false           # พืชโต (ปิดไว้เพราะกิน performance)
+  entity_change_block: true   # enderman/falling sand เปลี่ยนบล็อก
+  decorative_entities: true   # ห้ามทุบ armor stand / item frame / painting
+  item_drop: true             # ห้ามโยนของใน spawn zone
+  item_pickup: true           # ห้ามเก็บของใน spawn zone
+  item_pickup_warning: false  # ส่งข้อความเตือนตอนเก็บของ (อาจ spam — default ปิด)
+
+messages:
+  admin:
+    no_permission: "&cYou do not have permission to execute this command."
+    block_break_admin: "&cYou cannot break blocks in this area. (Use /build on to enable)"
+    block_break_player: "&cYou cannot break blocks in this area."
+    block_place_admin: "&cYou cannot place blocks in this area. (Use /build on to enable)"
+    block_place_player: "&cYou cannot place blocks in this area."
+    block_interact_admin: "&cYou cannot interact with this object in this area. (Use /build on to enable)"
+    block_interact_player: "&cYou cannot interact with this object in this area."
+    block_entity_damage_admin: "&cYou cannot damage this entity in this area. (Use /build on to enable)"
+    block_entity_damage_player: "&cYou cannot damage this entity in this area."
+    block_drop_admin: "&cYou cannot drop items in this area. (Use /build on to enable)"
+    block_drop_player: "&cYou cannot drop items in this area."
+    block_pickup_admin: "&cYou cannot pick up items in this area. (Use /build on to enable)"
+    block_pickup_player: "&cYou cannot pick up items in this area."
+
+    bossbar_on_vanished: "&c[Admin Mode] &fBuild: &aON &7| &fVanish: &aON"
+    bossbar_on_not_vanished: "&c[Admin Mode] &fBuild: &aON &7| &fVanish: &cOFF"
+    bossbar_off_vanished: "&c[Admin Mode] &fBuild: &cOFF &7| &fVanish: &aON"
+    bossbar_off: "&c[Admin Mode] &fBuild: &cOFF &7| &fVanish: &cOFF"
+
+    build_usage: "&eUsage: /build &a<on|off>"
+    adminmode_enabled: "&aAdmin Mode enabled. (Build Mode status visible)"
+    adminmode_disabled: "&cAdmin Mode disabled."
+    adminmode_usage: "&eUsage: /adminmode <on|off>"
+    block_warning_cooldown_ms: 2000
+  spawn:
+    set_success: "&aLobby spawn point has been successfully set."
+    teleport_success: "&bTeleported to the spawn point."
+    not_set: "&cSpawn point has not been set. Please contact an administrator to set it via /setspawn."
+    console_only: "This command can only be executed in-game by a player."
+  reload:
+    success: "&aGlobal Plugin configuration has been reloaded successfully."
