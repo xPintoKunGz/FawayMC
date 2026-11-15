@@ -12,13 +12,15 @@ import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
 import net.md_5.bungee.config.YamlConfiguration;
 
-import org.kcm.bloomery.fawaymc.bungee.global.Global;
+import org.kcm.bloomery.fawaymc.bungee.Global;
 
 /**
  * บันทึก "เซิร์ฟเวอร์ล่าสุด" ของผู้เล่นแต่ละคนลง sessions.yml
  * ใช้ตอน rejoin เพื่อให้ผู้เล่นกลับไปเซิร์ฟเวอร์เดิม
  */
 public class PlayerSessionManager {
+
+    private static final long AUTO_SAVE_SECONDS = 60L;
 
     private final Global plugin;
     private final File file;
@@ -114,14 +116,11 @@ public class PlayerSessionManager {
         }
     }
 
-    /** ตั้ง task บันทึกอัตโนมัติทุก N วินาที (ตั้งใน config ได้) */
+    /** ตั้ง task บันทึกอัตโนมัติทุก AUTO_SAVE_SECONDS วินาที */
     public void startAutoSave() {
         stopAutoSave();
-        int intervalSec = plugin.getConfig().getInt("stay-server.auto-save-seconds", 60);
-        if (intervalSec <= 0) return;
-
         saveTaskId = plugin.getProxy().getScheduler()
-                .schedule(plugin, this::saveAsync, intervalSec, intervalSec, TimeUnit.SECONDS)
+                .schedule(plugin, this::saveAsync, AUTO_SAVE_SECONDS, AUTO_SAVE_SECONDS, TimeUnit.SECONDS)
                 .getId();
     }
 

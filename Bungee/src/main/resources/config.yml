@@ -1,5 +1,11 @@
+stay-server:
+  enabled: true
+  auto-save-seconds: 60
+
+lobby-server: lobby
+
 settings:
-  max_players: 2024
+  max_players: 2026
   version_name: "&aFawayMC &7- &f1.21+"
 
 motd:
