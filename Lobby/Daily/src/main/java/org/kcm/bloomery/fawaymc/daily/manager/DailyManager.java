@@ -1,7 +1,12 @@
 package org.kcm.bloomery.fawaymc.daily.manager;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.event.ClickEvent;
+import net.kyori.adventure.text.event.HoverEvent;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -9,7 +14,9 @@ import org.kcm.bloomery.fawaymc.daily.data.DailyDataManager;
 import org.kcm.bloomery.fawaymc.daily.data.PlayerStreak;
 
 import java.time.format.DateTimeFormatter;
+import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 
 public class DailyManager {
@@ -26,6 +33,9 @@ public class DailyManager {
    private final Plugin plugin;
    private final DailyDataManager dataManager;
    private final DailyCache cache;
+
+   // ✅ ตัวแปรสำหรับป้องกันการแจ้งเตือนซ้ำในรอบการเข้าสู่เซิร์ฟเวอร์เดียว
+   private final Set<UUID> remindedThisSession = ConcurrentHashMap.newKeySet();
 
    public DailyManager(Plugin plugin, DailyDataManager dataManager, DailyCache cache) {
       this.plugin = plugin;
@@ -172,20 +182,18 @@ public class DailyManager {
    }
 
    // ═══════════════════════════════════════════════════════════
-   // CLAIM — ★ FIX: แยก cachedStreak กับ streak (final)
+   // CLAIM
    // ═══════════════════════════════════════════════════════════
    public void claimAsync(Player player, Consumer<ClaimResult> callback) {
       final UUID uuid = player.getUniqueId();
 
       Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
-         // ★ FIX: ใช้ตัวแปร cachedStreak สำหรับ reassign
          PlayerStreak cachedStreak = cache.get(uuid);
          if (cachedStreak == null || cachedStreak.getUuid() == null) {
             cachedStreak = dataManager.loadStreak(uuid);
             cache.set(uuid, cachedStreak);
          }
 
-         // ★ FIX: สร้าง final streak สำหรับใช้ใน Lambda
          final PlayerStreak streak = cachedStreak;
 
          if (!canClaim(streak)) {
@@ -213,22 +221,18 @@ public class DailyManager {
             }
 
             if (!rewardsOk) {
-               player.sendMessage(ChatColor.RED
-                       + "✘ Reward failed! Please contact admin.");
+               player.sendMessage(ChatColor.RED + "✘ Reward failed! Please contact admin.");
                complete(callback, ClaimResult.ERROR);
                return;
             }
 
-            // reward สำเร็จ → อัปเดต streak
             Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
                streak.setStreakDays(nextDay);
                streak.setLastClaimTime(System.currentTimeMillis());
-               streak.setLastClaimDate(java.time.LocalDate.now()
-                       .format(DATE_FMT));
+               streak.setLastClaimDate(java.time.LocalDate.now().format(DATE_FMT));
                streak.setTotalClaims(streak.getTotalClaims() + 1);
                dataManager.saveStreak(streak);
-               dataManager.logClaim(uuid, streak.getLastClaimDate(), nextDay,
-                       "day_" + nextDay);
+               dataManager.logClaim(uuid, streak.getLastClaimDate(), nextDay, "day_" + nextDay);
 
                Bukkit.getScheduler().runTask(plugin, () -> {
                   sendClaimMessage(player, nextDay, rewardCfg);
@@ -266,8 +270,7 @@ public class DailyManager {
             if (amount <= 0) continue;
 
             if (!giveBox(player, boxId, amount)) {
-               plugin.getLogger().warning("[Daily] giveBox(" + boxId + ") FAILED for "
-                       + player.getName());
+               plugin.getLogger().warning("[Daily] giveBox(" + boxId + ") FAILED for " + player.getName());
                return false;
             }
          }
@@ -287,31 +290,25 @@ public class DailyManager {
             return false;
          }
 
-         java.lang.reflect.Method m = findMethod(dataMgr, "addCoins",
-                 UUID.class, null);
+         java.lang.reflect.Method m = findMethod(dataMgr, "addCoins", UUID.class, null);
 
          if (m == null) {
-            plugin.getLogger().severe("[Daily] ❌ addCoins(UUID, int|long) NOT FOUND in "
-                    + dataMgr.getClass().getName());
+            plugin.getLogger().severe("[Daily] ❌ addCoins(UUID, int|long) NOT FOUND in " + dataMgr.getClass().getName());
             logAvailableMethods(dataMgr);
             return false;
          }
 
          Class<?>[] types = m.getParameterTypes();
-         Object arg = (types[1] == long.class)
-                 ? (Object) (long) amount
-                 : (Object) amount;
+         Object arg = (types[1] == long.class) ? (Object) (long) amount : (Object) amount;
 
          try {
             Object result = m.invoke(dataMgr, player.getUniqueId(), arg);
-            plugin.getLogger().info("[Daily] ✓ Coins +" + amount + " → "
-                    + player.getName()
+            plugin.getLogger().info("[Daily] ✓ Coins +" + amount + " → " + player.getName()
                     + " (returned " + (result != null ? result.toString() : "void") + ")");
             return true;
          } catch (java.lang.reflect.InvocationTargetException e) {
             Throwable cause = e.getCause();
-            plugin.getLogger().severe("[Daily] ❌ addCoins threw: "
-                    + (cause != null ? cause.toString() : e.toString()));
+            plugin.getLogger().severe("[Daily] ❌ addCoins threw: " + (cause != null ? cause.toString() : e.toString()));
             if (cause != null) cause.printStackTrace();
             return false;
          }
@@ -330,8 +327,7 @@ public class DailyManager {
          Object dataMgr = lb.getClass().getMethod("getData").invoke(lb);
          if (dataMgr == null) return false;
 
-         java.lang.reflect.Method m = findMethod(dataMgr, "addBox",
-                 UUID.class, String.class, null);
+         java.lang.reflect.Method m = findMethod(dataMgr, "addBox", UUID.class, String.class, null);
 
          if (m == null) {
             plugin.getLogger().severe("[Daily] ❌ addBox(UUID, String, int|long) NOT FOUND");
@@ -340,18 +336,13 @@ public class DailyManager {
          }
 
          Class<?>[] types = m.getParameterTypes();
-         Object arg3 = (types[2] == long.class)
-                 ? (Object) (long) amount
-                 : (Object) amount;
+         Object arg3 = (types[2] == long.class) ? (Object) (long) amount : (Object) amount;
 
          try {
             Object result = m.invoke(dataMgr, player.getUniqueId(), boxId, arg3);
-            int added = (result instanceof Number)
-                    ? ((Number) result).intValue()
-                    : amount;
+            int added = (result instanceof Number) ? ((Number) result).intValue() : amount;
 
-            plugin.getLogger().info("[Daily] ✓ Box " + boxId + " x" + amount
-                    + " → " + player.getName()
+            plugin.getLogger().info("[Daily] ✓ Box " + boxId + " x" + amount + " → " + player.getName()
                     + " (added " + added + ")");
 
             if (added < amount) {
@@ -362,8 +353,7 @@ public class DailyManager {
             return true;
          } catch (java.lang.reflect.InvocationTargetException e) {
             Throwable cause = e.getCause();
-            plugin.getLogger().severe("[Daily] ❌ addBox(" + boxId + ") threw: "
-                    + (cause != null ? cause.toString() : e.toString()));
+            plugin.getLogger().severe("[Daily] ❌ addBox(" + boxId + ") threw: " + (cause != null ? cause.toString() : e.toString()));
             if (cause != null) cause.printStackTrace();
             return false;
          }
@@ -389,8 +379,7 @@ public class DailyManager {
             for (int i = 0; i < types.length; i++) {
                if (types[i] == null) {
                   if (!isNumeric(actual[i])) { match = false; break; }
-               } else if (!types[i].isAssignableFrom(actual[i])
-                       && actual[i] != types[i]) {
+               } else if (!types[i].isAssignableFrom(actual[i]) && actual[i] != types[i]) {
                   match = false;
                   break;
                }
@@ -406,18 +395,15 @@ public class DailyManager {
    }
 
    private boolean isNumeric(Class<?> c) {
-      return c == int.class || c == long.class
-              || c == Integer.class || c == Long.class;
+      return c == int.class || c == long.class || c == Integer.class || c == Long.class;
    }
 
    private void logAvailableMethods(Object target) {
-      plugin.getLogger().warning("[Daily] Available methods in "
-              + target.getClass().getName() + ":");
+      plugin.getLogger().warning("[Daily] Available methods in " + target.getClass().getName() + ":");
       for (java.lang.reflect.Method m : target.getClass().getDeclaredMethods()) {
          String n = m.getName().toLowerCase();
          if (n.contains("coin") || n.contains("box") || n.contains("add")) {
-            plugin.getLogger().warning("[Daily]   - " + m.getName()
-                    + java.util.Arrays.toString(m.getParameterTypes()));
+            plugin.getLogger().warning("[Daily]   - " + m.getName() + java.util.Arrays.toString(m.getParameterTypes()));
          }
       }
    }
@@ -431,16 +417,14 @@ public class DailyManager {
               "&a&l✔ &aYou claimed &e{reward} &afor &eDay {day}&a!");
       String msg = format
               .replace("{day}", String.valueOf(day))
-              .replace("{reward}", ChatColor.stripColor(
-                      ChatColor.translateAlternateColorCodes('&', display)));
+              .replace("{reward}", ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', display)));
       player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + msg));
 
       int cycleLength = plugin.getConfig().getInt("settings.cycle_length", 7);
       if (day >= cycleLength) {
          String milestone = plugin.getConfig().getString("messages.milestone_reached",
                  "&d&l🎉 &fYou completed Day {max}! &7Streak reset for new cycle.");
-         player.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                 prefix + milestone.replace("{max}", String.valueOf(cycleLength))));
+         player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + milestone.replace("{max}", String.valueOf(cycleLength))));
       }
    }
 
@@ -450,7 +434,7 @@ public class DailyManager {
       }
    }
 
-   // ========== LOADER ==========
+   // ========== LOADER & REMINDER ==========
 
    public void loadPlayerAsync(UUID uuid, String name) {
       cache.setName(uuid, name);
@@ -458,5 +442,53 @@ public class DailyManager {
          PlayerStreak streak = dataManager.loadStreak(uuid);
          cache.set(uuid, streak);
       });
+   }
+
+   /**
+    * ✅ เมธอดใหม่สำหรับแจ้งเตือนด้วย Clickable Text (สไตล์ Hypixel)
+    */
+   public void sendReminder(Player player) {
+      UUID uuid = player.getUniqueId();
+
+      // 1. ถ้าแจ้งเตือนไปแล้วในเซสชันนี้ ให้ข้ามไปเลย
+      if (remindedThisSession.contains(uuid)) return;
+
+      // 2. ดึงข้อมูลว่ามีรางวัลให้กดรับหรือไม่
+      PlayerStreak streak = cache.get(uuid);
+      if (streak == null || !canClaim(streak)) return;
+
+      // 3. ดึงข้อความจาก config
+      String titleRaw = plugin.getConfig().getString("messages.reminder.title", "&e&l★ &f&lDAILY REWARDS &e&l★");
+      String descRaw = plugin.getConfig().getString("messages.reminder.desc", "&fYour daily reward is ready to be claimed!");
+      String btnText = plugin.getConfig().getString("messages.reminder.button", "&a&l[ CLICK HERE TO CLAIM ]");
+      String hoverText = plugin.getConfig().getString("messages.reminder.hover", "&7Click to open the Daily Rewards GUI");
+
+      // 4. แปลงเป็น Component
+      Component titleComp = LegacyComponentSerializer.legacyAmpersand().deserialize(titleRaw);
+      Component descComp = LegacyComponentSerializer.legacyAmpersand().deserialize(descRaw);
+
+      // 5. สร้างปุ่มกด (คลิกแล้วรันคำสั่ง /daily เพื่อเปิด GUI เท่านั้น)
+      Component buttonComponent = LegacyComponentSerializer.legacyAmpersand().deserialize(btnText)
+              .clickEvent(ClickEvent.runCommand("/daily"))
+              .hoverEvent(HoverEvent.showText(LegacyComponentSerializer.legacyAmpersand().deserialize(hoverText)));
+      player.sendMessage(Component.empty());
+      player.sendMessage(descComp);
+      player.sendMessage(buttonComponent);
+      player.sendMessage(Component.empty());
+
+      // 7. เล่นเสียงแจ้งเตือน
+      try {
+         player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.5f);
+      } catch (Throwable ignored) {}
+
+      // 8. บันทึกว่าแจ้งเตือนแล้ว
+      remindedThisSession.add(uuid);
+   }
+
+   /**
+    * ✅ ล้างประวัติการแจ้งเตือนเมื่อผู้เล่นออกจากเซิร์ฟเวอร์
+    */
+   public void clearSession(UUID uuid) {
+      remindedThisSession.remove(uuid);
    }
 }

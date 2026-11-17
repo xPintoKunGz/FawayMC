@@ -16,22 +16,26 @@ scoreboard:
         - '&6 ▪ &fCoins: &6%luckyblock_coins_formatted%' # Luckyblock
         - '&6 ▪ &fLucky Vault: &2%luckyblock_total_formatted%' # Luckyblock
         - '&r'
-        - '&d⚑ &fFriend Online: &d%friend_online_count%'
+        - '&d⚑ &fFriends Online: &d%friend_online_count%'
         - '&r'
         - '&a▶ &fGlobal Players: &a%server_online%' # PAPI
         - '&a▶ &fServer: &aLobby' # PAPI
         - '&r'
         - '&ewww.fawaymc.net'
     - title: '&6&lFawayMC'
+      update_ticks: 40
       lines:
         - '&7{date} {time}'
+        - '&r'
+        - '&fRank: %luckperms_prefix%'
         - '&r'
         - '&fYou are on:'
         - ' &a▶ Lobby Server'
         - '&r'
         - '&fServers:'
-        - ' &e▶ &fLobby: &e%bungee_lobby%&7/2024'
-        - ' &c▶ &fBedwars: &c%bungee_bedwars%&7/200'
+        - ' &e▶ &fLobby: &e%bungee_lobby%'
+        - ' &6▶ &fGamemodes: &60'
+        - ' &b▶ &fMatchings: &b0'
         - '&r'
         - '&a▶ &fGlobal Players: &a%server_online%'
         - '&r'

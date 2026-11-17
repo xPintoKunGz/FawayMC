@@ -1,18 +1,31 @@
 # FawayMC Join Effects Configuration
+#
+# Rank options for 'required_rank' and 'ignored_ranks':
+# - "default" (for new players)
+# - "member" (for standard players)
+# - "vip", "mvp" (for donators)
+# - "custom" (highest tier / legendary rank)
+# Note: You can change "custom" to match your actual LuckPerms group name.
 
 join:
-  message: "&b✦ &a[+] %luckperms_prefix%{player} &eได้เข้าร่วมเซิร์ฟเวอร์!"
+  message: "&a[+] %luckperms_prefix%{player} &ejoined the server!"
 quit:
-  message: "&b✦ &c[-] %luckperms_prefix%{player} &cออกจากเซิร์ฟเวอร์แล้ว"
+  message: "&c[-] %luckperms_prefix%{player} &cleft the server."
 
 join_effects:
   enabled: true
   effects:
+    # ────────────────────────────────────────────────────────
+    # 1. WELCOME BOARD (Skipped for default/member)
+    # ────────────────────────────────────────────────────────
     welcome_board:
       enabled: true
       trigger: "JOIN"
       delay_ticks: 5
       permission: ""
+      ignored_ranks:
+        - "default"
+        - "member"
       messages:
         - ""
         - "&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█&e█&d█"
@@ -35,11 +48,17 @@ join_effects:
       sound:
         enabled: false
 
-    welcome_effect:
+    # ────────────────────────────────────────────────────────
+    # 2. VIP WELCOME EFFECT (Skipped for default/member)
+    # ────────────────────────────────────────────────────────
+    vip_welcome_effect:
       enabled: true
       trigger: "JOIN"
       delay_ticks: 5
       permission: ""
+      ignored_ranks:
+        - "default"
+        - "member"
       messages: ""
       particle:
         enabled: true
@@ -55,12 +74,15 @@ join_effects:
         volume: 1.0
         pitch: 1.0
 
+    # ────────────────────────────────────────────────────────
+    # 3. FIRST TIME JOIN (Shows for everyone)
+    # ────────────────────────────────────────────────────────
     first_join:
       enabled: true
       trigger: "FIRST_JOIN"
       delay_ticks: 10
       permission: ""
-      message: "&d&l★ &eยินดีต้อนรับสมาชิกใหม่ &a&l{player} &eสู่ FawayMC!"
+      message: "&d&l★ &eWelcome new member &a&l{player} &eto FawayMC!"
       particle:
         enabled: true
         type: "TOTEM_OF_UNDYING"
@@ -75,12 +97,15 @@ join_effects:
         volume: 1.0
         pitch: 1.0
 
+    # ────────────────────────────────────────────────────────
+    # 4. RESPAWN EFFECT
+    # ────────────────────────────────────────────────────────
     respawn:
       enabled: true
       trigger: "RESPAWN"
       delay_ticks: 10
       permission: ""
-      message: "&bคุณได้เกิดใหม่แล้ว!"
+      message: "&bYou have respawned!"
       particle:
         enabled: true
         type: "CLOUD"
@@ -92,5 +117,35 @@ join_effects:
       sound:
         enabled: true
         type: "ENTITY_ENDERMAN_TELEPORT"
+        volume: 1.0
+        pitch: 1.0
+
+    # ────────────────────────────────────────────────────────
+    # 5. CUSTOM JOIN (Only for the 'custom' rank)
+    # ────────────────────────────────────────────────────────
+    custom_elite_join:
+      enabled: true
+      trigger: "JOIN"
+      required_rank: "custom"
+      delay_ticks: 10
+      permission: ""
+      messages:
+        - ""
+        - "&c&l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+        - " &6&l✨ &e&lE&6&lL&e&lI&6&lT&e&lE &6&lR&e&lA&6&lN&e&lK &6&l✨"
+        - " &fThe legendary &c&l{player} &fhas graced us with their presence!"
+        - " &c&l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+        - ""
+      particle:
+        enabled: true
+        type: "TOTEM_OF_UNDYING"
+        count: 100
+        offset_x: 1.0
+        offset_y: 1.5
+        offset_z: 1.0
+        extra: 0.5
+      sound:
+        enabled: true
+        type: "ENTITY_ENDER_DRAGON_GROWL"
         volume: 1.0
         pitch: 1.0

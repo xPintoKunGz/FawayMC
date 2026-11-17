@@ -189,6 +189,7 @@ public final class Global extends JavaPlugin implements Listener, CommandExecuto
 
       this.startAdminBossBarTask();
       this.startItemCheckTask();
+      this.startBungeeTask();
       this.getLogger().info(String.valueOf(ChatColor.GREEN) + "Global Plugin เปิดใช้งานสำเร็จแล้ว!");
    }
 
@@ -256,7 +257,7 @@ public final class Global extends JavaPlugin implements Listener, CommandExecuto
          Bukkit.getScheduler().cancelTask(this.bungeeTaskId);
       }
 
-      this.bungeeTaskId = Bukkit.getScheduler().runTaskTimer(this, () -> this.requestBungeeData(), 100L, 100L).getTaskId();
+      this.bungeeTaskId = Bukkit.getScheduler().runTaskTimer(this, () -> this.requestBungeeData(), 20L, 20L).getTaskId();
    }
 
    private void requestBungeeData() {
@@ -1540,13 +1541,7 @@ public final class Global extends JavaPlugin implements Listener, CommandExecuto
          rawJoin = "&a[+] {player} joined the server!";
       }
 
-      try {
-         String joinMsg = PlaceholderManager.setPlaceholders(player, rawJoin).replace("{player}", playerName);
-         event.setJoinMessage((String)null);
-         Bukkit.broadcastMessage(joinMsg);
-      } catch (Exception e) {
-         this.getLogger().severe("[Global] broadcast error: " + e.getMessage());
-      }
+      event.setJoinMessage(null);
 
       player.setGameMode(GameMode.SURVIVAL);
       if (this.spawnLocation != null) {

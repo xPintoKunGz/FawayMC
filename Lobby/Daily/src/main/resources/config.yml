@@ -201,6 +201,9 @@ messages:
   already_claimed: "&cYou have already claimed today's reward!"
   claimed: "&a&l✔ &aYou claimed &e{reward} &afor &eDay {day}&a!"
   milestone_reached: "&d&l🎉 &fYou completed Day {max}! &7Streak reset for new cycle."
-  login_notify: "&e&l⭐ &fYou have a daily reward to claim! &7(/daily claim)"
   no_rewards: "&cNo rewards configured for this rank/day."
   reload_success: "&aConfig reloaded!"
+  reminder:
+    desc: "&6&lDAILY REWARD! &eYour daily reward is ready to be claimed!"
+    button: "&d ➢ &a&l[ CLICK HERE TO CLAIM ]"
+    hover: "&7Click to claim your daily reward!"

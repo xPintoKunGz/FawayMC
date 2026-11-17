@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "org.kcm.bloomery.fawaymc.global"
-version = "26.3"
+version = "26.3+v1.1"
 
 repositories {
     mavenCentral()

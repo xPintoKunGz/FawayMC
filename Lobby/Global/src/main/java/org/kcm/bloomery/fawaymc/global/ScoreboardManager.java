@@ -25,6 +25,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.DisplaySlot;
+import io.papermc.paper.scoreboard.numbers.NumberFormat;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
@@ -33,10 +34,10 @@ public class ScoreboardManager implements CommandExecutor, TabCompleter {
    private final JavaPlugin plugin;
    private FileConfiguration scoreboardConfig;
    private File scoreboardFile;
-   private final Map<UUID, Scoreboard> activeBoards = new HashMap();
-   private final Map<UUID, Integer> playerPageIndex = new HashMap();
-   private final Map<UUID, Long> playerLastSwitch = new HashMap();
-   private final List<ScoreboardPage> cachedPages = new ArrayList();
+   private final Map<UUID, Scoreboard> activeBoards = new HashMap<>();
+   private final Map<UUID, Integer> playerPageIndex = new HashMap<>();
+   private final Map<UUID, Long> playerLastSwitch = new HashMap<>();
+   private final List<ScoreboardPage> cachedPages = new ArrayList<>();
    private int taskID = -1;
    private int animationTaskId = -1;
    private int animationFrame = 0;
@@ -91,7 +92,7 @@ public class ScoreboardManager implements CommandExecutor, TabCompleter {
          this.scoreboardConfig.set("title_animation.enabled", true);
          this.scoreboardConfig.set("title_animation.mode", "frames");
          this.scoreboardConfig.set("title_animation.interval_ticks", 3);
-         List<String> frames = new ArrayList();
+         List<String> frames = new ArrayList<>();
          frames.add("&d&lF&b&la&d&lwayMC");
          frames.add("&d&lFa&bb&d&layMC");
          frames.add("&d&lFaw&ba&d&lyMC");
@@ -266,7 +267,7 @@ public class ScoreboardManager implements CommandExecutor, TabCompleter {
    }
 
    private List<String> buildAnimationFrames() {
-      List<String> frames = new ArrayList();
+      List<String> frames = new ArrayList<>();
       String mode = this.scoreboardConfig.getString("title_animation.mode", "frames");
       if ("scroll".equalsIgnoreCase(mode)) {
          String base = this.scoreboardConfig.getString("title_animation.scroll_text", "FawayMC Network");
@@ -382,6 +383,10 @@ public class ScoreboardManager implements CommandExecutor, TabCompleter {
                } else if (!objective.getDisplayName().equals(title)) {
                   objective.setDisplayName(title);
                }
+
+               try {
+                  objective.numberFormat(NumberFormat.blank());
+               } catch (Throwable ignored) {}
 
                List<String> lines = currentPage.lines;
                int size = lines.size();
@@ -543,7 +548,7 @@ public class ScoreboardManager implements CommandExecutor, TabCompleter {
    }
 
    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-      List<String> completions = new ArrayList();
+      List<String> completions = new ArrayList<>();
       if (sender.hasPermission("global.admin") && args.length == 1) {
          String input = args[0].toLowerCase();
          if ("on".startsWith(input)) {
