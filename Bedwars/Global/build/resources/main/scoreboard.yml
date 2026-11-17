@@ -1,0 +1,48 @@
+# FawayMC Custom Scoreboard Configuration
+
+scoreboard:
+  enabled: true
+  update_ticks: 20
+  page_switch_seconds: []
+  pages:
+    - title: '&e&lBED WARS'
+      lines:
+        - '&7{date} {time}'
+        - '&r'
+        - '&6{player}'
+        - '&6 ▪ &fLevel: &7[&b0✫&7]' # Level
+        - '&6 ▪ &fProgress: &b0&7/&a0' # Advancement
+        - '&8 [&7||||||||||||||||||||&8]'
+        - ''
+        - '&6 ▪ &fTokens: &e0' # Luckyblock
+        - '&6 ▪ &fLoot Vault: &d0' # Luckyblock
+        - ''
+        - '&6 ▪ &fTotal Kills: &a0'
+        - '&6 ▪ &fTotal Wins: &a0'
+        - '&r'
+        - '&ewww.fawaymc.net'
+
+title_animation:
+  enabled: true
+  mode: frames  # frames or scroll
+  interval_ticks: 3
+  frames:
+    - "&f&lBED WARS"
+    - "&e&lB&f&lED WARS"
+    - "&6&lB&e&lE&f&lD WARS"
+    - "&f&lB&6&lE&e&lD &f&lWARS"
+    - "&f&lBE&6&lD&e&l W&f&lARS"
+    - "&f&lBED&6&l W&e&lA&f&lRS"
+    - "&f&lBED W&6&lA&e&lR&f&lS"
+    - "&f&lBED WA&6&lR&e&lS"
+    - "&f&lBED WAR&6&lS"
+    - "&f&lBED WARS"
+  scroll_text: '&e&lBED WARS'
+  scroll_padding: 8
+
+messages:
+  no_permission: '&cคุณไม่มีสิทธิ์ใช้งานคำสั่งนี้!'
+  usage: '&eการใช้งาน: /scoreboard <on|off|reload>'
+  enabled: '&aเปิดใช้งาน Scoreboard เรียบร้อยแล้ว!'
+  disabled: '&cปิดใช้งาน Scoreboard เรียบร้อยแล้ว!'
+  reload: '&aรีโหลดไฟล์ scoreboard.yml เรียบร้อยแล้ว!'

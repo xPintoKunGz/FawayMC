@@ -3,6 +3,7 @@ package org.kcm.bloomery.fawaymc.level.listener;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerExpChangeEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -34,6 +35,11 @@ public class PlayerListener implements Listener {
       if (this.plugin.getConfig().getBoolean("display.exp_bar.block_vanilla_xp", true)) {
          event.setAmount(0);
       }
+   }
 
+   @EventHandler(priority = EventPriority.HIGHEST)
+   public void onPlayerDeath(PlayerDeathEvent event) {
+      event.setDroppedExp(0);
+      event.setKeepLevel(true);
    }
 }

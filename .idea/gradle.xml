@@ -8,7 +8,10 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Bedwars" />
+            <option value="$PROJECT_DIR$/Bedwars/Global" />
             <option value="$PROJECT_DIR$/Bungee" />
+            <option value="$PROJECT_DIR$/Lobby" />
             <option value="$PROJECT_DIR$/Lobby/Advancement" />
             <option value="$PROJECT_DIR$/Lobby/Daily" />
             <option value="$PROJECT_DIR$/Lobby/Friend" />

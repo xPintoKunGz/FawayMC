@@ -1,0 +1,42 @@
+# ========================================================
+#          ReverseCrouch Plugin Configuration
+#   1.8.9 FastBridging & Snappy Crouch for Modern Paper
+# ========================================================
+
+# เปิดใช้งานระบบ ReverseCrouch แบบ Passive (ทำงานตลอดเวลา ไม่ต้องเปิดโหมด)
+enabled: true
+
+# เงื่อนไขการตรวจจับโหมดต่อบล็อก (Bridging Detection)
+bridging:
+  # ต้องถือบล็อกที่สามารถวางได้ในมือ (Main hand หรือ Off hand) หรือไม่
+  require-holding-placeable-block: true
+
+  # ต้องมองก้มลงมาที่ขอบบล็อกหรือไม่ (มุมก้มเล็งขอบบล็อก)
+  require-looking-down: true
+
+  # องศามุมก้มขั้นต่ำ (30.0 คือเริ่มมองต่ำลงพื้น, ปกติการต่อสะพานจะมองที่ 45 - 80 องศา)
+  min-pitch-angle: 30.0
+
+  # ระบบ SafeWalk / Edge Clamp (กันตกขอบบล็อกขณะเดินถอยหลังต่อสะพาน)
+  # ช่วยให้เดินถอยหลังต่อบล็อกได้อย่างมั่นใจ ไม่หลุดตกขอบแบบ 1.8.9
+  prevent-edge-fall: true
+
+  # บล็อกที่อนุญาตให้ต่อ (ปล่อยว่าง [] = อนุญาตบล็อกที่วางได้ทั้งหมด)
+  allowed-blocks: []
+
+# ปรับความเร็วในการย่อ (Sneaking Speed) ให้กระฉับกระเฉงสไตล์ 1.8.9
+sneak-speed:
+  # ปรับความเร็วตอนกดย่อหรือไม่ (ใช้ Attribute.SNEAKING_SPEED ของ Paper)
+  # ค่าปกติของ Minecraft 1.20+ คือ 0.3 (ช้ามาก)
+  # ค่า 0.45 - 0.6 จะทำให้กดย่อแล้วเคลื่อนไหวเร็วและลื่นไหลเหมือน 1.8.9
+  modify-speed: true
+  speed-value: 0.55
+
+# เสียงตอบรับสัมผัส (Optional Feedback)
+feedback:
+  # เล่นเสียงคลิกเบาๆ เมื่อระบบ SafeWalk ล็อกขอบบล็อกให้
+  play-edge-sound: false
+  sound-name: "BLOCK_NOTE_BLOCK_HAT"
+  volume: 0.3
+  pitch: 1.8
+

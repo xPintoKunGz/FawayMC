@@ -1,0 +1,263 @@
+# ========================================================
+#            BEDWARS NEXT-GEN CONFIGURATION
+#              Compatible with MC 26.3 / 1.20+
+# ========================================================
+
+server:
+  name: "§e§lYOUR§6§lSERVER§f.NET"
+  lobby-location: ""
+
+game:
+  lobby-countdown: 15
+  respawn-time: 5
+  game-duration: 1200 # 20 minutes (Game Ends)
+  diamond-2-time: 120 # 2 minutes
+  emerald-2-time: 240 # 4 minutes
+  diamond-3-time: 360 # 6 minutes
+  emerald-3-time: 480 # 8 minutes
+  bed-destroy-time: 600 # 10 minutes: Bed Destruction & Sudden Death
+  fireball-yield: 2.2
+  fireball-speed: 1.5
+  fireball-cooldown: 0.5
+  tnt-fuse-ticks: 50 # 2.5 seconds
+  bridge-egg-max-blocks: 25
+
+scoreboard:
+  title: "§f§l✦ §6§lB§e§lE§6§lD§e§lW§6§lA§e§lR§6§lS §f§l✦"
+  server-footer: "§eplay.yourserver.net"
+
+# ========================================================
+#             BASE & CENTER SPAWNER DROP RATES
+# ========================================================
+spawners:
+  # Base Spawner (Tier 0 default)
+  # Iron: interval in seconds (1s = 2 pieces), drop-amount = 2 pieces
+  iron-interval: 1
+  iron-drop-amount: 2
+  # Gold: interval in seconds (60s = 1 minute per 1 gold), drop-amount = 1 piece
+  gold-interval: 60
+  gold-drop-amount: 1
+  # Max items allowed on spawner pad before pausing
+  iron-max-cap: 24
+  gold-max-cap: 8
+  # Center Spawners (seconds)
+  diamond-tier1: 30
+  diamond-tier2: 20
+  diamond-tier3: 12
+  emerald-tier1: 60
+  emerald-tier2: 45
+  emerald-tier3: 30
+
+# ========================================================
+#             BEDWARS SHOP CONFIGURATION
+#   Admins can modify currency, prices, and amounts here!
+#   Currencies supported: IRON_INGOT, GOLD_INGOT, EMERALD
+# ========================================================
+shop:
+  prices:
+    # --- BLOCKS ---
+    wool:
+      price: 4
+      currency: "IRON_INGOT"
+      amount: 16
+    oak-planks:
+      price: 4
+      currency: "GOLD_INGOT"
+      amount: 16
+    spruce-planks:
+      price: 4
+      currency: "GOLD_INGOT"
+      amount: 16
+    glass:
+      price: 12
+      currency: "IRON_INGOT"
+      amount: 4
+    sandstone:
+      price: 12
+      currency: "IRON_INGOT"
+      amount: 16
+    cut-sandstone:
+      price: 16
+      currency: "IRON_INGOT"
+      amount: 16
+    end-stone:
+      price: 24
+      currency: "IRON_INGOT"
+      amount: 12
+    terracotta:
+      price: 12
+      currency: "IRON_INGOT"
+      amount: 16
+    slime-block:
+      price: 4
+      currency: "GOLD_INGOT"
+      amount: 4
+    obsidian:
+      price: 4
+      currency: "EMERALD"
+      amount: 4
+    dirt:
+      price: 4
+      currency: "IRON_INGOT"
+      amount: 16
+
+    # --- WEAPONS ---
+    stone-sword:
+      price: 10
+      currency: "IRON_INGOT"
+    iron-sword:
+      price: 7
+      currency: "GOLD_INGOT"
+    diamond-sword:
+      price: 4
+      currency: "EMERALD"
+    netherite-sword:
+      price: 7
+      currency: "EMERALD"
+    mace:
+      price: 18
+      currency: "EMERALD"
+    shield:
+      price: 20
+      currency: "IRON_INGOT"
+    stick:
+      price: 5
+      currency: "GOLD_INGOT"
+
+    # --- ARMOR ---
+    chain-armor:
+      price: 40
+      currency: "IRON_INGOT"
+    iron-armor:
+      price: 12
+      currency: "GOLD_INGOT"
+    diamond-armor:
+      price: 6
+      currency: "EMERALD"
+    netherite-armor:
+      price: 10
+      currency: "EMERALD"
+    elytra:
+      price: 16
+      currency: "EMERALD"
+
+    # --- TOOLS ---
+    shears:
+      price: 20
+      currency: "IRON_INGOT"
+    wood-pickaxe:
+      price: 10
+      currency: "IRON_INGOT"
+    wood-axe:
+      price: 10
+      currency: "IRON_INGOT"
+
+    # --- RANGED ---
+    bow:
+      price: 12
+      currency: "GOLD_INGOT"
+    bow-power:
+      price: 24
+      currency: "GOLD_INGOT"
+    bow-punch:
+      price: 6
+      currency: "EMERALD"
+    crossbow:
+      price: 12
+      currency: "GOLD_INGOT"
+    arrows:
+      price: 2
+      currency: "GOLD_INGOT"
+      amount: 8
+    snowball:
+      price: 8
+      currency: "IRON_INGOT"
+      amount: 16
+    wind-charge:
+      price: 2
+      currency: "EMERALD"
+      amount: 5
+
+    # --- POTIONS ---
+    speed-potion:
+      price: 1
+      currency: "EMERALD"
+    jump-potion:
+      price: 1
+      currency: "EMERALD"
+    invisibility-potion:
+      price: 2
+      currency: "EMERALD"
+    instant-health:
+      price: 2
+      currency: "EMERALD"
+    regen-potion:
+      price: 3
+      currency: "EMERALD"
+
+    # --- FOOD ---
+    steak:
+      price: 20
+      currency: "IRON_INGOT"
+      amount: 4
+    golden-carrot:
+      price: 3
+      currency: "GOLD_INGOT"
+      amount: 3
+    golden-apple:
+      price: 3
+      currency: "GOLD_INGOT"
+      amount: 1
+    god-apple:
+      price: 6
+      currency: "EMERALD"
+      amount: 1
+
+    # --- TACTICS & UTILITIES ---
+    golden-apple-tactics:
+      price: 3
+      currency: "GOLD_INGOT"
+    fireball:
+      price: 40
+      currency: "IRON_INGOT"
+    tnt:
+      price: 4
+      currency: "GOLD_INGOT"
+    ender-pearl:
+      price: 4
+      currency: "EMERALD"
+    water-bucket:
+      price: 3
+      currency: "GOLD_INGOT"
+    bridge-egg:
+      price: 1
+      currency: "EMERALD"
+    ice-wall:
+      price: 24
+      currency: "IRON_INGOT"
+    bed-defender-golem:
+      price: 120
+      currency: "IRON_INGOT"
+    bed-bug:
+      price: 30
+      currency: "IRON_INGOT"
+    popup-fortress:
+      price: 24
+      currency: "IRON_INGOT"
+    firework:
+      price: 1
+      currency: "EMERALD"
+      amount: 3
+    fishing-rod:
+      price: 10
+      currency: "IRON_INGOT"
+    flint-and-steel:
+      price: 8
+      currency: "IRON_INGOT"
+    hoglin:
+      price: 4
+      currency: "EMERALD"
+    ravager:
+      price: 8
+      currency: "EMERALD"
+

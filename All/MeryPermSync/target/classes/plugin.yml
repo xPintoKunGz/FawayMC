@@ -1,0 +1,15 @@
+name: MeryPermSync
+version: 1.0.0
+main: com.mery.permsync.MeryPermSync
+api-version: 1.13
+load: STARTUP
+loadbefore: [LuckPerms]
+author: Mery
+description: Auto linker and synchronizer for LuckPerms YAML storage
+
+commands:
+  permsync:
+    description: Reload and sync LuckPerms with master storage
+    aliases: [merysync, syncyos]
+    permission: merypermsync.admin
+    usage: /<command>

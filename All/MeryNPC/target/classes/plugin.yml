@@ -1,0 +1,26 @@
+name: MeryNPC
+version: '26.3'
+main: com.mery.npc.MeryNPC
+api-version: '26.3'
+load: POSTWORLD
+author: MeryStudio
+description: Next-Gen 3D Interactive Persona, Aura, Scale, Hologram & Action Studio for Paper 26.3.
+softdepend: [Vault, PlaceholderAPI, Multiverse-Core, MultiWorld, My_Worlds, Worlds, PhantomWorlds]
+
+commands:
+  merynpc:
+    description: Main command for MeryNPC Studio
+    aliases: [mnpc, mery, npc]
+    permission: merynpc.admin
+    usage: /<command> [studio|spawn|help]
+
+permissions:
+  merynpc.admin:
+    description: Full administrative access to MeryNPC Studio
+    default: op
+  merynpc.interact:
+    description: Permission to interact with MeryNPC personas
+    default: true
+  merynpc.bypass.cooldown:
+    description: Bypass action cooldowns on MeryNPC personas
+    default: op

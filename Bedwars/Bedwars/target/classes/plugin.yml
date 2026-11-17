@@ -1,0 +1,20 @@
+name: Bedwars
+version: 2.0.0
+main: com.bedwars.BedwarsPlugin
+api-version: '1.20'
+author: Antigravity
+description: Next-Generation Bedwars Plugin for Minecraft 26.3 and modern versions
+softdepend: [PlaceholderAPI, HoloMery, MeryNPC]
+commands:
+  bedwars:
+    description: Main command for Bedwars plugin
+    aliases: [bw]
+    permission: bedwars.player
+    usage: /bw help
+permissions:
+  bedwars.player:
+    description: Permission for players to join games
+    default: true
+  bedwars.admin:
+    description: Full administrative and arena setup permissions
+    default: op

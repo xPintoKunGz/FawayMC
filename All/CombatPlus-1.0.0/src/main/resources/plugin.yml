@@ -1,0 +1,16 @@
+name: CombatPlus
+version: 1.0.0
+main: com.combatplus.CombatPlus
+api-version: '26.3'
+description: Classic 1.8.9 sword blocking for Minecraft 26.3 - Made By FawayMC
+author: FawayMC
+permissions:
+  combatplus.admin:
+    description: Allows reloading and managing CombatPlus
+    default: op
+  combatplus.block:
+    description: Allows player to block with swords
+    default: true
+  combatplus.toggle:
+    description: Allows player to toggle sword blocking for themselves
+    default: true

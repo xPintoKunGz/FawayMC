@@ -15,8 +15,7 @@ import net.md_5.bungee.config.YamlConfiguration;
 import org.kcm.bloomery.fawaymc.bungee.Global;
 
 /**
- * บันทึก "เซิร์ฟเวอร์ล่าสุด" ของผู้เล่นแต่ละคนลง sessions.yml
- * ใช้ตอน rejoin เพื่อให้ผู้เล่นกลับไปเซิร์ฟเวอร์เดิม
+ * เก็บ "เซิร์ฟเวอร์ล่าสุด" ของผู้เล่นแต่ละคนลง sessions.yml
  */
 public class PlayerSessionManager {
 
@@ -68,14 +67,12 @@ public class PlayerSessionManager {
                     lastServers.put(uuid, server);
                 }
             } catch (IllegalArgumentException ignored) {
-                // skip malformed keys
             }
         }
 
         plugin.getLogger().info("[Session] โหลด " + lastServers.size() + " รายการ");
     }
 
-    /** บันทึกแบบ synchronous — ใช้ตอน shutdown */
     public synchronized void save() {
         if (!dirty) return;
 
@@ -92,7 +89,6 @@ public class PlayerSessionManager {
         }
     }
 
-    /** บันทึกแบบ async — ใช้ตอน runtime เพื่อไม่บล็อก main thread */
     public void saveAsync() {
         if (!dirty) return;
         plugin.getProxy().getScheduler().runAsync(plugin, this::save);
@@ -116,7 +112,6 @@ public class PlayerSessionManager {
         }
     }
 
-    /** ตั้ง task บันทึกอัตโนมัติทุก AUTO_SAVE_SECONDS วินาที */
     public void startAutoSave() {
         stopAutoSave();
         saveTaskId = plugin.getProxy().getScheduler()

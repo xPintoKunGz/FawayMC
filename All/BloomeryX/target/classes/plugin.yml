@@ -1,0 +1,366 @@
+name: BloomeryX
+version: '1.0.0'
+main: com.bloomerymc.bloomeryx.BloomeryX
+api-version: '1.20'
+authors: [BloomeryX Team]
+description: A modern, elegant and powerful Essentials-like plugin with LuckPerms & PlaceholderAPI integration, AFK zone, Freeze, and Jukebox Music.
+softdepend: [LuckPerms, PlaceholderAPI]
+
+commands:
+  bloomeryx:
+    description: Main plugin control command
+    aliases: [bx]
+    permission: bloomeryx.admin
+  gamemode:
+    description: Change game mode
+    aliases: [gm]
+    permission: bloomeryx.command.gamemode
+    usage: /<command> <0|1|2|3|s|c|a|sp> [player]
+  gms:
+    description: Switch to Survival mode
+    permission: bloomeryx.command.gamemode
+  gmc:
+    description: Switch to Creative mode
+    permission: bloomeryx.command.gamemode
+  gma:
+    description: Switch to Adventure mode
+    permission: bloomeryx.command.gamemode
+  gmsp:
+    description: Switch to Spectator mode
+    permission: bloomeryx.command.gamemode
+  day:
+    description: Set time to day
+    permission: bloomeryx.command.time
+  night:
+    description: Set time to night
+    permission: bloomeryx.command.time
+  noon:
+    description: Set time to noon
+    permission: bloomeryx.command.time
+  midnight:
+    description: Set time to midnight
+    permission: bloomeryx.command.time
+  time:
+    description: Control world time
+    permission: bloomeryx.command.time
+    usage: /<command> <set|add> <value> [world]
+  sun:
+    description: Clear world weather
+    aliases: [clearweather]
+    permission: bloomeryx.command.weather
+  rain:
+    description: Make it rain
+    permission: bloomeryx.command.weather
+  storm:
+    description: Make a thunderstorm
+    aliases: [thunder]
+    permission: bloomeryx.command.weather
+  weather:
+    description: Control world weather
+    permission: bloomeryx.command.weather
+    usage: /<command> <clear|rain|thunder> [world]
+  fly:
+    description: Toggle flight mode
+    permission: bloomeryx.command.fly
+    usage: /<command> [player]
+  heal:
+    description: Restore health and remove negative effects
+    permission: bloomeryx.command.heal
+    usage: /<command> [player]
+  feed:
+    description: Satisfy hunger
+    permission: bloomeryx.command.feed
+    usage: /<command> [player]
+  god:
+    description: Toggle god mode (invulnerability)
+    aliases: [godmode]
+    permission: bloomeryx.command.god
+    usage: /<command> [player]
+  speed:
+    description: Adjust walk or fly speed
+    permission: bloomeryx.command.speed
+    usage: /<command> <1-10> [player]
+  vanish:
+    description: Become invisible to other players
+    aliases: [v]
+    permission: bloomeryx.command.vanish
+  workbench:
+    description: Open a virtual crafting table
+    aliases: [craft, wb]
+    permission: bloomeryx.command.workbench
+  enderchest:
+    description: Open your ender chest from anywhere
+    aliases: [ec]
+    permission: bloomeryx.command.enderchest
+    usage: /<command> [player]
+  anvil:
+    description: Open a virtual anvil
+    permission: bloomeryx.command.anvil
+  smithing:
+    description: Open a virtual smithing table
+    permission: bloomeryx.command.smithing
+  cartography:
+    description: Open a virtual cartography table
+    permission: bloomeryx.command.cartography
+  grindstone:
+    description: Open a virtual grindstone
+    permission: bloomeryx.command.grindstone
+  loom:
+    description: Open a virtual loom
+    permission: bloomeryx.command.loom
+  hat:
+    description: Wear an item on your head
+    permission: bloomeryx.command.hat
+  clear:
+    description: Clear inventory
+    aliases: [ci, clearinventory]
+    permission: bloomeryx.command.clear
+    usage: /<command> [player]
+  suicide:
+    description: End your own life
+    permission: bloomeryx.command.suicide
+  kill:
+    description: Kill yourself or another player
+    permission: bloomeryx.command.kill
+    usage: /<command> [player]
+  smite:
+    description: Strike lightning at targeted location or player
+    aliases: [lightning, strike]
+    permission: bloomeryx.command.smite
+    usage: /<command> [player]
+  ping:
+    description: Check server latency
+    permission: bloomeryx.command.ping
+    usage: /<command> [player]
+  near:
+    description: Detect nearby players
+    permission: bloomeryx.command.near
+    usage: /<command> [radius]
+  home:
+    description: Teleport to a saved home
+    permission: bloomeryx.command.home
+    usage: /<command> [name]
+  sethome:
+    description: Set a saved home location
+    permission: bloomeryx.command.sethome
+    usage: /<command> [name]
+  delhome:
+    description: Remove a saved home
+    aliases: [deletehome, rmhome]
+    permission: bloomeryx.command.delhome
+    usage: /<command> <name>
+  homes:
+    description: List your saved homes
+    permission: bloomeryx.command.home
+  warp:
+    description: Teleport to a server warp
+    permission: bloomeryx.command.warp
+    usage: /<command> [name]
+  setwarp:
+    description: Create a server warp
+    permission: bloomeryx.command.setwarp
+    usage: /<command> <name>
+  delwarp:
+    description: Delete a server warp
+    aliases: [deletewarp, rmwarp]
+    permission: bloomeryx.command.delwarp
+    usage: /<command> <name>
+  warps:
+    description: List available warps
+    permission: bloomeryx.command.warp
+  tpa:
+    description: Request to teleport to a player
+    permission: bloomeryx.command.tpa
+    usage: /<command> <player>
+  tpahere:
+    description: Request a player to teleport to you
+    permission: bloomeryx.command.tpahere
+    usage: /<command> <player>
+  tpaccept:
+    description: Accept incoming teleport request
+    aliases: [tpyes]
+    permission: bloomeryx.command.tpa
+  tpdeny:
+    description: Deny incoming teleport request
+    aliases: [tpno]
+    permission: bloomeryx.command.tpa
+  tpcancel:
+    description: Cancel your sent teleport request
+    permission: bloomeryx.command.tpa
+  back:
+    description: Return to your previous location or death point
+    aliases: [return]
+    permission: bloomeryx.command.back
+  tp:
+    description: Teleport to player or coordinates
+    aliases: [teleport]
+    permission: bloomeryx.command.tp
+    usage: /<command> <player> [target]
+  tphere:
+    description: Teleport a player directly to your location
+    permission: bloomeryx.command.tphere
+    usage: /<command> <player>
+  tpall:
+    description: Teleport all online players to you
+    permission: bloomeryx.command.tpall
+  broadcast:
+    description: Broadcast a message across the server
+    aliases: [bc, alert]
+    permission: bloomeryx.command.broadcast
+    usage: /<command> <message>
+  msg:
+    description: Send a private whisper to a player
+    aliases: [whisper, w, tell, m]
+    permission: bloomeryx.command.msg
+    usage: /<command> <player> <message>
+  reply:
+    description: Reply to the last private message
+    aliases: [r]
+    permission: bloomeryx.command.msg
+    usage: /<command> <message>
+  socialspy:
+    description: Monitor private messages
+    aliases: [spy]
+    permission: bloomeryx.command.socialspy
+  invsee:
+    description: Inspect a player's inventory
+    permission: bloomeryx.command.invsee
+    usage: /<command> <player>
+  repair:
+    description: Repair items
+    aliases: [fix]
+    permission: bloomeryx.command.repair
+    usage: /<command> [all|hand]
+  nick:
+    description: Set a custom nickname connected with LuckPerms formatting
+    aliases: [nickname]
+    permission: bloomeryx.command.nick
+    usage: /<command> [player] <nickname|off>
+  afk:
+    description: Toggle your AFK status
+    permission: bloomeryx.command.afk
+    usage: /<command> [reason]
+  setafk:
+    description: Set the server AFK destination point
+    aliases: [setafkpoint]
+    permission: bloomeryx.command.setafk
+  delafk:
+    description: Remove the server AFK destination point
+    aliases: [remafk]
+    permission: bloomeryx.command.setafk
+  freeze:
+    description: Freeze a player or the entire world
+    permission: bloomeryx.command.freeze
+    usage: /<command> <player|world>
+  unfreeze:
+    description: Unfreeze a frozen player
+    permission: bloomeryx.command.freeze
+    usage: /<command> <player>
+  freezeworld:
+    description: Freeze or unfreeze the entire world
+    aliases: [tickfreeze]
+    permission: bloomeryx.command.freezeworld
+  ban:
+    description: Ban a player from the server
+    permission: bloomeryx.command.ban
+    usage: /<command> <player> [reason]
+  unban:
+    description: Unban a player from the server
+    aliases: [pardon]
+    permission: bloomeryx.command.unban
+    usage: /<command> <player>
+  ban-ip:
+    description: Ban an IP address or player's IP
+    aliases: [banip]
+    permission: bloomeryx.command.banip
+    usage: /<command> <player|ip> [reason]
+  unban-ip:
+    description: Unban an IP address
+    aliases: [unbanip, pardon-ip]
+    permission: bloomeryx.command.unbanip
+    usage: /<command> <ip>
+  music:
+    description: Open the custom Jukebox music menu
+    aliases: [jukebox]
+    permission: bloomeryx.command.music
+    usage: /<command> [play|stop|toggle]
+
+permissions:
+  bloomeryx.admin:
+    description: Full administration access
+    default: op
+    children:
+      bloomeryx.command.*: true
+      bloomeryx.bypass.*: true
+  bloomeryx.command.*:
+    description: Access to all BloomeryX commands
+    default: op
+  bloomeryx.command.afk:
+    description: Allow using /afk
+    default: true
+  bloomeryx.command.setafk:
+    description: Allow setting and deleting the AFK destination point
+    default: op
+  bloomeryx.command.freeze:
+    description: Allow freezing and unfreezing players
+    default: op
+  bloomeryx.command.freezeworld:
+    description: Allow freezing the entire world
+    default: op
+  bloomeryx.bypass.freezeworld:
+    description: Bypass world freeze restrictions
+    default: op
+  bloomeryx.command.ban:
+    description: Allow banning players
+    default: op
+  bloomeryx.command.unban:
+    description: Allow unbanning players
+    default: op
+  bloomeryx.command.banip:
+    description: Allow banning IP addresses
+    default: op
+  bloomeryx.command.unbanip:
+    description: Allow unbanning IP addresses
+    default: op
+  bloomeryx.command.kill:
+    description: Allow killing players
+    default: op
+  bloomeryx.command.smite:
+    description: Allow striking lightning
+    default: op
+  bloomeryx.command.music:
+    description: Allow listening to custom jukebox music
+    default: true
+  bloomeryx.command.music.others:
+    description: Allow playing music to others or all players
+    default: op
+  bloomeryx.bypass.afk:
+    description: Exclude player from auto-AFK check
+    default: op
+  bloomeryx.chat.mention:
+    description: Allow @mentioning players in chat
+    default: true
+  bloomeryx.command.gamemode.others:
+    description: Change other players gamemode
+    default: op
+  bloomeryx.command.fly.others:
+    description: Change other players fly
+    default: op
+  bloomeryx.command.heal.others:
+    description: Heal other players
+    default: op
+  bloomeryx.command.feed.others:
+    description: Feed other players
+    default: op
+  bloomeryx.command.god.others:
+    description: Toggle god mode on others
+    default: op
+  bloomeryx.command.nick.others:
+    description: Change nicknames of others
+    default: op
+  bloomeryx.command.nick.colors:
+    description: Allow color codes in nicknames
+    default: true
+  bloomeryx.chat.colors:
+    description: Allow color codes in chat
+    default: op

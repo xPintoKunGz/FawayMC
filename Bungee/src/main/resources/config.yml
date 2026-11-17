@@ -6,7 +6,7 @@ lobby-server: lobby
 
 settings:
   max_players: 2026
-  version_name: "&aFawayMC &7- &f1.21+"
+  version_name: "&aLet's enjoy! &e26.3+"
 
 motd:
   randomize: true

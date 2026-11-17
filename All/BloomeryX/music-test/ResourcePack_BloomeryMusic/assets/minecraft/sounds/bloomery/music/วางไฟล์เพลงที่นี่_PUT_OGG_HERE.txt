@@ -1,0 +1,7 @@
+วางไฟล์เพลง .ogg ไว้ที่โฟลเดอร์นี้:
+1. wipwup.ogg   (สำหรับเพลง วิบวับ)
+2. doraemon.ogg (สำหรับเพลง โดราเอมอน)
+
+* หมายเหตุ: หากใช้ไฟล์เพลง .mp3 สามารถแปลงเป็น .ogg ได้ฟรีผ่านเว็บ เช่น convertio.co หรือ audio.online-convert.com
+เมื่อวางไฟล์แล้ว บีบอัดโฟลเดอร์ ResourcePack_BloomeryMusic เป็นไฟล์ .zip แล้วใส่ใน resourcepacks ของเกม หรือใส่เป็น server-resource-pack ใน server.properties ได้เลย!
+

@@ -1,0 +1,19 @@
+name: Imagery
+version: 1.0.0
+main: com.imagery.ImageryPlugin
+api-version: '1.20'
+author: Antigravity
+description: 'External image display plugin using Vanilla Maps without resource packs, with GUI and Style 26.3'
+commands:
+  imagery:
+    description: Main command for Imagery plugin
+    aliases: [img, image, images]
+    permission: imagery.use
+permissions:
+  imagery.use:
+    description: Allows opening GUI and using basic Imagery commands
+    default: true
+  imagery.admin:
+    description: Allows placing, resizing, and deleting images
+    default: op
+

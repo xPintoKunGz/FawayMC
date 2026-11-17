@@ -1,0 +1,55 @@
+# ========================================================
+#              CombatPlus - Configuration
+#                  Made By FawayMC
+#    Classic 1.8.9 Sword Blocking for Minecraft 26.3
+# ========================================================
+
+# General sword blocking toggle
+enabled: true
+
+# Percentage of incoming damage reduced when blocking with a sword.
+# In Minecraft 1.8.9, sword blocking reduced damage by 50.0%.
+# Set to 100.0 if you want it to block all damage like a shield.
+damage-reduction-percent: 50.0
+
+# Horizontal angle (in degrees) within which attacks can be blocked.
+# 180.0 means anything in front of the player (90 degrees to each side).
+horizontal-blocking-angle: 180.0
+
+# Sound played when blocking an attack.
+# Default: "minecraft:item.shield.block"
+block-sound: "minecraft:item.shield.block"
+
+# Block delay in seconds.
+# 0.0 means instant blocking (like 1.8.9, no 5-tick shield delay).
+block-delay-seconds: 0.0
+
+# Should arrows and projectiles be deflected/bounced off when blocking?
+deflect-projectiles: true
+
+# Play spark / shield particles when blocking an attack.
+play-particles: true
+
+# Durability damage applied to the sword per blocked attack.
+# Set to 0 to disable durability loss when blocking.
+durability-damage: 1
+
+# Knockback reduction percentage while blocking (1.8.9 reduced knockback).
+# 50.0 means player takes 50% less knockback. 100.0 means no knockback.
+knockback-reduction-percent: 50.0
+
+# Require permission "combatplus.block" to use sword blocking?
+require-permission: false
+
+# Disabled worlds where sword blocking is turned off
+disabled-worlds:
+  - "example_disabled_world"
+
+# Messages
+messages:
+  prefix: "&8[&6CombatPlus&8] &r"
+  reload-success: "&aConfiguration reloaded successfully!"
+  no-permission: "&cYou do not have permission to execute this command."
+  toggle-on: "&aSword blocking has been &eenabled &afor you."
+  toggle-off: "&cSword blocking has been &edisabled &cfor you."
+  sword-given: "&aGiven upgraded blocking sword (&e%type%&a) to &f%player%&a."

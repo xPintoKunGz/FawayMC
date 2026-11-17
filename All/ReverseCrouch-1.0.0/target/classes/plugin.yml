@@ -1,0 +1,22 @@
+name: ReverseCrouch
+version: 1.0.0
+main: com.antigravity.reversecrouch.ReverseCrouch
+api-version: '1.21'
+author: Antigravity
+description: Bring back 1.8.9-style fast bridging & responsive sneak mechanics to modern Minecraft without mode toggles!
+permissions:
+  reversecrouch.use:
+    description: Allows player to use ReverseCrouch bridging mechanics
+    default: true
+  reversecrouch.bypass:
+    description: Bypasses ReverseCrouch mechanics
+    default: false
+  reversecrouch.admin:
+    description: Allows reloading plugin configuration
+    default: op
+commands:
+  reversecrouch:
+    description: Reload ReverseCrouch plugin config
+    permission: reversecrouch.admin
+    usage: /reversecrouch reload
+

@@ -1,0 +1,37 @@
+# -----------------------------------------------------------
+# MeryNPC Studio Messages Configuration
+# Palette: Royal Amethyst (&#7366FF), Rose Pink (&#FF6CAB), Gold (&#FFD166)
+# -----------------------------------------------------------
+
+prefix: "&#FF6CAB✦ &#7366FFMery&#FFD166NPC &8» &7"
+
+messages:
+  no-permission: "&#FF5858✖ &cคุณไม่มีสิทธิ์เข้าถึงระบบ MeryNPC Studio!"
+  player-only: "&#FF5858✖ &cคำสั่งนี้สำหรับผู้เล่นในเกมเท่านั้น!"
+  npc-created: "&#43E97B✔ &fสร้างหุ่นจำลองสำเร็จ! &8(&#FFD166ID: #%id% &8| &fชื่อ: &#FF6CAB%name%&8)"
+  npc-removed: "&#43E97B✔ &fลบหุ่นจำลอง &#FFD166#%id% &fออกจากเซิร์ฟเวอร์แล้ว!"
+  npc-not-found: "&#FF5858✖ &cไม่พบหุ่นจำลองหมายเลข &#FFD166#%id%"
+  npc-selected: "&#43E97B✔ &fกำลังจัดการหุ่นจำลอง &#FFD166#%id% &8(&f%name%&8)"
+  no-npc-selected: "&#FF5858✖ &cยังไม่ได้เลือกหุ่นจำลอง! หันมองหุ่นหรือพิมพ์ &#FF6CAB/mnpc target <id>"
+  npc-teleported-to: "&#43E97B✔ &fวาร์ปมายังตำแหน่งของหุ่นจำลอง &#FFD166#%id% &fแล้ว!"
+  npc-teleported-here: "&#43E97B✔ &fอัญเชิญหุ่นจำลอง &#FFD166#%id% &fมายืนที่ตำแหน่งของคุณแล้ว!"
+  npc-renamed: "&#43E97B✔ &fอัปเดตชื่อหุ่นจำลอง &#FFD166#%id% &fเป็น: &#FF6CAB%name%"
+  
+  skin-updating: "&#FFD166⚡ &eกำลังซิงค์โมเดลสกิน 3 มิติของ &#FF6CAB%name%..."
+  skin-updated: "&#43E97B✔ &fอัปเดตสกิน 3 มิติของหุ่น &#FFD166#%id% &fเป็น &#FF6CAB%name% &fเรียบร้อย!"
+  skin-failed: "&#FF5858✖ &cไม่พบข้อมูลสกินของ &#FFD166%name%"
+
+  pose-updated: "&#43E97B✔ &fเปลี่ยนท่วงท่าของหุ่น &#FFD166#%id% &fเป็น &#FF6CAB%pose% &fแล้ว!"
+  equip-updated: "&#43E97B✔ &fสวมใส่อุปกรณ์ช่อง &#FFD166%slot% &fให้หุ่นจำลองแล้ว!"
+  equip-copied: "&#43E97B✔ &fคัดลอกเครื่องแต่งกายและอาวุธของคุณใส่ให้หุ่น &#FFD166#%id% &fครบทุกชิ้นแล้ว!"
+
+  holo-line-added: "&#43E97B✔ &fเพิ่มป้ายข้อความลอยฟ้าบรรทัดที่ &#FFD166#%line% &fแล้ว!"
+  holo-line-removed: "&#43E97B✔ &fลบป้ายข้อความลอยฟ้าบรรทัดที่ &#FFD166#%line% &fแล้ว!"
+  holo-cleared: "&#43E97B✔ &fล้างป้ายข้อความลอยฟ้าของหุ่น &#FFD166#%id% &fทั้งหมดแล้ว!"
+
+  cmd-added: "&#43E97B✔ &fผูก Action ใหม่สำเร็จ! &8[&#FFD166%type%&8] &f%cmd%"
+  cmd-removed: "&#43E97B✔ &fลบ Action ลำดับที่ &#FFD166#%index% &fออกแล้ว!"
+  cmd-cooldown: "&#FF5858⏳ &cกรุณารออีก &#FFD166%time% วินาที &cก่อนโต้ตอบอีกครั้ง!"
+  cmd-no-money: "&#FF5858✖ &cต้องใช้เงิน &#FFD166$%cost% &cในการโต้ตอบกับหุ่นตัวนี้!"
+
+  config-reloaded: "&#43E97B✔ &fรีโหลดระบบ MeryNPC Studio และซิงค์หุ่นจำลองทั้งหมดเรียบร้อยแล้ว!"

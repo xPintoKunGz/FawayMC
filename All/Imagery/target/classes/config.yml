@@ -1,0 +1,27 @@
+# ========================================================
+#            IMAGERY SYSTEM - STYLE 26.3
+# ========================================================
+# External Image Display Plugin for Minecraft
+# No resource pack required! Simply drop images into:
+# plugins/Imagery/images/
+# ========================================================
+
+settings:
+  # Maximum allowed width and height in blocks
+  max-width: 24
+  max-height: 24
+
+  # Default frame settings when placing images
+  default-invisible-frames: true
+  default-glowing: false
+
+  # Duration in seconds for highlighting image location in the world
+  highlight-duration-seconds: 12
+
+messages:
+  prefix: "&#00f2fe❖ &#4facfe&lImagery &#7f8c8d» &f"
+  no-permission: "&#ff0844✖ คุณไม่มีสิทธิ์ในการใช้คำสั่งนี้"
+  target-not-wall: "&#ff0844✖ กรุณาหันหน้ามองไปที่ผนังหรือบล็อกในระยะ 6 บล็อก"
+  file-not-found: "&#ff0844✖ ไม่พบไฟล์รูปภาพในโฟลเดอร์ images/"
+  placed-success: "&#00f5a0✔ วางรูปภาพสำเร็จเรียบร้อยแล้ว!"
+

@@ -1,0 +1,41 @@
+# ========================================================
+#            ✦ HoloMery Configuration ✦
+#   Next-Gen Display Entity Holograms for Modern Minecraft
+# ========================================================
+
+settings:
+  # Hologram refresh interval in server ticks (20 ticks = 1 second)
+  # Controls how frequently placeholders and animated tags update
+  refresh-interval-ticks: 20
+
+  # Default line spacing in blocks (distance between consecutive lines)
+  default-line-spacing: 0.30
+
+  # Default billboard orientation mode:
+  # CENTER      - Rotates smoothly to always face the player (Default)
+  # FIXED       - Stays flat in the direction it was spawned
+  # VERTICAL    - Only rotates horizontally (pitch is fixed)
+  # HORIZONTAL  - Only rotates vertically
+  default-billboard: CENTER
+
+  # Default scale for new holograms (1.0 = normal size)
+  default-scale: 1.0
+
+  # Render shadow behind text (true/false)
+  default-shadow: true
+
+  # Whether text can be seen through blocks/walls by default (true/false)
+  default-see-through: false
+
+  # Default background mode (โหมดพื้นหลังสีดำเริ่มต้น):
+  # true  = Transparent / invisible background box (แนะนำ: โปร่งใส ไร้กล่องดำ)
+  # false = Minecraft default translucent dark background box (มีกล่องพื้นหลังสีดำแบบมายคราฟ)
+  default-transparent-background: true
+
+  # Text alignment: CENTER, LEFT, or RIGHT
+  default-alignment: CENTER
+
+messages:
+  prefix: "<gradient:#00F2FE:#4FACFE:#FF0080>&l✦ HoloMery ✦</gradient> &8» &r"
+  no-permission: "<#FF0844>&l[ERROR] <#FFB199>You do not have permission to execute this command."
+

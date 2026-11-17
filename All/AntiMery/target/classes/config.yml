@@ -1,0 +1,444 @@
+# ============================================================== #
+#                     AntiMery Anti-Cheat v26.3                  #
+#    Plugin ป้องกันการโกง, บิน, โจมตี, ขุดไว และกรองคำหยาบ (TH/EN)   #
+# ============================================================== #
+
+# การตั้งค่าทั่วไป (General Settings)
+general:
+  prefix: "&8[&cAntiMery&8] &r"
+  
+  # โหมดทำงานแบบเงียบ (Silent Operation):
+  # ไม่สแปมข้อความ log หรือแจ้งเตือนเข้าแชทของแอดมิน ไม่ส่งข้อความเตือนให้คนทำผิดรู้ตัว
+  # ตรวจเช็คเงียบๆ เมื่อคะแนนความผิดเยอะแล้วจะเตะหรือแบนทันที!
+  silent-mode: true
+  
+  # บันทึกข้อความการตรวจจับลง Console เพื่อตรวจสอบย้อนหลัง (ปิดไว้เพื่อไม่ให้รก)
+  console-debug: false
+
+  # การลงโทษเริ่มต้นเมื่อผู้เล่นทำผิดกฎ (Default Punishment)
+  # ตัวเลือก: KICK (เตะออกทันที), BAN (แบนทันที), COMMAND (รันคำสั่ง)
+  default-punishment: "KICK"
+  
+  # คำสั่งที่ใช้เมื่อเลือกการลงโทษเป็น "COMMAND" หรือ "BAN"
+  custom-command: "tempban %player% 1d [AntiMery] ตรวจพบการใช้โปรแกรมโกง (%check%)"
+  ban-command: "ban %player% &c[AntiMery] คุณถูกแบนเนื่องจากตรวจพบโปรแกรมโกง (%check%)"
+  
+  # ข้อความเตะออก (Kick Message)
+  kick-message: "&c[AntiMery]\n&fคุณถูกเตะออกจากเซิร์ฟเวอร์\n&7สาเหตุ: &e%reason%\n&8(&cตรวจพบพฤติกรรมผิดปกติ&8)"
+  
+  # ล้างค่าคะแนนความผิด (Violations) ทุกๆ กี่วินาทีหากไม่ทำผิดซ้ำ
+  violation-reset-seconds: 120
+
+# ============================================================== #
+#           ระบบ Atlas (Hypixel-Inspired Assessment Engine)      #
+# ============================================================== #
+# รวบรวมแต้มความน่าสงสัยและค่าความมั่นใจ (Confidence Score 0-100%)
+# จากทั้ง Watchdog, NoCheatPlus และ Prediction Engine
+# ทำงานอย่างเงียบสนิท เมื่อแต้มความผิดรวมถึงเกณฑ์จะเตะหรือแบนทันที
+atlas:
+  enabled: true
+  # ขีดจำกัดแต้มความน่าสงสัยรวม เมื่อถึงระดับนี้จะลงโทษทันที
+  max-suspicion: 100.0
+  # รูปแบบการลงโทษ (KICK หรือ BAN)
+  punishment: "KICK"
+  # ลดแต้มความน่าสงสัยทุกๆ 1 นาที หากผู้เล่นเล่นปกติ
+  decay-per-minute: 5.0
+
+# ============================================================== #
+#           ระบบป้องกันการเข้าแทรกบัญชี (Anti-Hijack / Bypass)       #
+# ============================================================== #
+# ป้องกันไอดีเถื่อน (Cracked) หรือผู้เล่นอื่นเข้าแทรกชื่อซ้ำกับผู้เล่นที่กำลังออนไลน์อยู่
+# หากมีผู้เล่นชื่อนี้อยู่ในเซิร์ฟเวอร์แล้ว คนที่พยายามเข้าซ้อนจะไม่สามารถเข้าได้เด็ดขาด!
+anti-hijack:
+  enabled: true
+  kick-message: "&c[AntiMery]\n&fไม่สามารถเข้าสู่ระบบได้!\n&eมีผู้เล่นชื่อนี้กำลังออนไลน์อยู่ในเซิร์ฟเวอร์แล้ว\n&8(ระบบป้องกันการเข้าแทรกบัญชี / Session Hijack)"
+
+# ============================================================== #
+#           ระบบป้องกัน Port Bypass (Prevent Port Bypass)          #
+# ============================================================== #
+# ป้องกันผู้เล่นเข้าตรงผ่าน Port ของ Spigot/Paper ด้านหลัง โดยไม่ผ่าน BungeeCord/Velocity Proxy
+# - auto-detect-bungee: ถ้าเปิดระบบจะตรวจจับเองว่าเซิร์ฟเวอร์เป็นโหมด BungeeCord หรือไม่ (เช็ค spigot.yml settings.bungeecord หรือ Paper velocity)
+# - ถ้าไม่ใช่ BungeeCord (เซิร์ฟเวอร์เดี่ยว Standalone): จะปล่อยผ่านตามปกติ ไม่บล็อค ไม่กระทบผู้เล่น
+# - ถ้าเป็น BungeeCord: จะบังคับให้เข้าผ่าน Proxy IP/Port ที่กำหนดเท่านั้น ป้องกันคนแฮกเจาะ Port ตรง!
+prevent-port-bypass:
+  enabled: true
+  # ตรวจจับโหมด BungeeCord/Proxy อัตโนมัติ (แนะนำให้เปิด true)
+  # หากเป็น standalone server ระบบจะไม่บล็อคใดๆ
+  auto-detect-bungee: true
+  
+  # บังคับเปิดระบบป้องกันแม้ auto-detect จะเป็น false (กรณีต้องการบังคับเอง)
+  force-enable: false
+  
+  # IP address ของ BungeeCord / Velocity Proxy
+  # สามารถใส่หลาย IP ได้โดยคั่นด้วยเครื่องหมาย ';' เช่น: 127.0.0.1;192.168.1.10;12.34.56.78
+  # ผู้เล่นต้องเชื่อมต่อมาจาก IP ของ Proxy เท่านั้นจึงจะได้รับอนุญาตให้เข้าเซิร์ฟเวอร์
+  proxy-addresses:
+    - "127.0.0.1"
+    - "localhost"
+  
+  # ข้อความเมื่อเตะผู้เล่นที่พยายามเข้าเซิร์ฟเวอร์โดยตรงไม่ผ่าน Proxy
+  kick-message: "&c[AntiMery]\n&fกรุณาเข้าเซิร์ฟเวอร์ผ่าน IP/Port หลักของทางเซิร์ฟเวอร์เท่านั้น!\n&e(ห้ามเชื่อมต่อ Port ด้านหลังโดยตรง / Port Bypass Blocked)"
+  
+  # แสดง Debug ข้อความใน Console เมื่อมีการตรวจสอบ
+  debug: false
+
+
+# ============================================================== #
+#         ระบบตรวจจับไคลเอนต์และแฮค (Client & Hack Detector)      #
+# ============================================================== #
+# ตรวจจับว่าผู้เล่นใช้ไคลเอนต์หรือมอดประเภทใด:
+#   - PvP Client (เช่น Lunar Client, LabyMod, Badlion, Feather)
+#   - Vanilla (มายคราฟธรรมดา, OptiFine)
+#   - Hack Client / Cheating Mods (เช่น Wurst, Meteor, LiquidBounce, Aristois, Sigma, Impact, Vape, Rise, ฯลฯ)
+client-detection:
+  enabled: true
+  # บล็อคและแบน/เตะทันทีเมื่อตรวจพบว่าใช้ Hack Client หรือมอดแฮคโกงเกม
+  block-hack-clients: true
+  
+  # รูปแบบการลงโทษ (KICK หรือ BAN)
+  punishment: "KICK"
+  
+  # ข้อความเตะออกเมื่อตรวจพบแฮคไคลเอนต์หรือมอดโกงเกม
+  kick-message: "&c[AntiMery]\n&fตรวจพบการใช้งานโปรแกรมช่วยเล่น/มอดแฮค (&c%client%&f)\n&eกรุณาปิดโปรแกรมช่วยเล่นแล้วใช้ Minecraft ธรรมดาเข้าสู่เซิร์ฟเวอร์!"
+  
+  # รายการชื่อมอดแฮคหรือคีย์เวิร์ดของ Hack Client ที่ไม่อนุญาตให้เข้าเซิร์ฟเวอร์
+  banned-mods:
+    - "wurst"
+    - "meteor"
+    - "liquidbounce"
+    - "aristois"
+    - "sigma"
+    - "impact"
+    - "inertia"
+    - "bleach"
+    - "rusher"
+    - "future"
+    - "vape"
+    - "fdp"
+    - "thunder"
+    - "mathax"
+    - "augustus"
+    - "rise"
+    - "novoline"
+    - "astolfo"
+    - "flux"
+    - "huzuni"
+    - "koid"
+    - "drip"
+    - "raven"
+    - "xray"
+    - "baritone"
+    - "cheststealer"
+    - "freecam"
+    - "autotool"
+    - "seedcracker"
+
+  # แจ้งเตือนแอดมินในแชทเมื่อมีผู้เล่นเชื่อมต่อว่าใช้ Client หรือมอดอะไร
+  staff-notify-on-join: true
+
+
+# ============================================================== #
+#                   ระบบตรวจจับการเคลื่อนที่ (Movement)            #
+# ============================================================== #
+checks:
+  # 1. ระบบกันบิน (Fly Check)
+  # ป้องกันการบิน/ลอยตัวในอากาศโดยไม่มีเหตุผล
+  fly:
+    enabled: true
+    # รูปแบบการลงโทษ (KICK = ค่าเริ่มต้นตามที่ขอ, BAN = แบนทันที, WARN, COMMAND, NOTIFY_ONLY)
+    # หากตั้งค่าเป็น BAN จะแบนทันที, หากตั้ง KICK จะเตะทันที!
+    punishment: "KICK"
+    # จำนวนครั้งที่ตรวจพบก่อนสั่งลงโทษ
+    max-vl: 3
+    # ปิดการดึงกลับ (No Setback/Pullback) เพื่อการเคลื่อนที่ที่ลื่นไหล ไม่กระตุก ไม่ดึง
+    setback: false
+    # อนุญาตให้บินได้หากได้รับอนุญาตจากคำสั่งของเซิร์ฟเวอร์ (เช่น /fly, Essentials, CMI, TempFly)
+    # ทำให้คนใช้คำสั่งบินเอง หรือได้รับยา/เอฟเฟกต์ จะไม่ถูกเตะเด็ดขาด!
+    allow-command-flight: true
+    # ระยะเวลาลอยตัวในอากาศสูงสุดโดยไม่มีบล็อกรองรับ (หน่วย: Ticks, 12 ticks ~ 0.6 วินาที)
+    max-air-ticks: 12
+    # เตะทันทีเมื่อพบลอยตัวหรือบินขึ้นในอากาศโดยไม่มีเหตุผล (ไม่มีคำสั่ง, ไม่มียา, ไม่มีบล็อก)
+    instant-kick-on-no-reason: true
+
+  # 2. ระบบกันวิ่งไว (Speed Check)
+  speed:
+    enabled: true
+    punishment: "KICK"
+    max-vl: 5
+    setback: false
+    # ความเร็วสูงสุดที่อนุญาตต่อ tick ในการวิ่งปกติ (มีคำนวณบวกเอฟเฟกต์ Speed เพิ่มให้อัตโนมัติ)
+    max-horizontal-speed: 0.65
+
+  # 3. ระบบกันตกไม่เจ็บ (NoFall Check)
+  # ดักจับคนที่หลอกเซิร์ฟเวอร์ว่าอยู่บนพื้นเพื่อไม่ให้เสียเลือดจากการตก
+  nofall:
+    enabled: true
+    punishment: "KICK"
+    max-vl: 3
+
+  # 4. ระบบกันเดินบนน้ำ/ลาวา (Jesus / WaterWalk Check)
+  jesus:
+    enabled: true
+    punishment: "KICK"
+    max-vl: 4
+    setback: false
+
+  # 5. ระบบกระโดดสูง/ก้าวบล็อกผิดปกติ (HighJump / Step Check)
+  # ตรวจจับการกระโดดสูงผิดธรรมชาติ หากมีปลั๊กอินอื่นในเซิร์ฟเวอร์ (เช่น จัมป์แพด, แท่นดีด, แทรมโพลีน, ดับเบิ้ลจัมป์ หรือคำสั่ง) จะไม่ถูกเตะเด็ดขาด
+  # แต่ถ้ากระโดดสูงลอยขึ้นไปโดยไม่มีต้นเหตุ ไม่มีคำสั่ง และไม่มียา จะสั่งเตะออกทันที (หรือแบนหากตั้งค่าไว้)!
+  highjump:
+    enabled: true
+    punishment: "KICK"
+    max-vl: 4
+    setback: false
+    max-jump-height: 1.35
+    allow-double-jump: true
+
+  # 6. ระบบปีนบันไดไว (FastClimb Check)
+  fastclimb:
+    enabled: true
+    punishment: "KICK"
+    max-vl: 4
+    setback: false
+
+  # ============================================================== #
+  #             ระบบทำนายเวกเตอร์ (Prediction Anti-Cheat)           #
+  # ============================================================== #
+  # จำลองการเคลื่อนที่ของไคลเอนต์ (Client Motion Simulation)
+  # คำนวณตำแหน่งที่ควรจะเป็นตามหลักฟิสิกส์ แรงเสียดทาน และแรงเฉื่อย
+  # ตรวจจับ Speed, Fly, Timer, Step, Vector Spoofing
+  prediction:
+    enabled: true
+    punishment: "KICK"
+    max-vl: 4
+    setback: false
+    # ความคลาดเคลื่อนเวกเตอร์สูงสุดที่อนุญาต (Vector Offset Limit)
+    max-vector-offset: 0.18
+
+  # ============================================================== #
+  #                   ระบบตรวจจับการต่อสู้ (Combat)                 #
+  # ============================================================== #
+  # 7. ระบบกัน KillAura (ตีรอบทิศทาง / ตีข้างหลังโดยไม่หันหน้า)
+  killaura:
+    enabled: true
+    punishment: "KICK"
+    max-vl: 4
+    cancel-attack: true
+    # องศาการมองสูงสุดที่ยอมรับได้ (หากเป้าหมายอยู่นอก FOV เกินนี้จะนับเป็น Aura)
+    max-angle: 90.0
+
+  # 8. ระบบกันตีไกล (Reach Check)
+  reach:
+    enabled: true
+    punishment: "KICK"
+    max-vl: 4
+    cancel-attack: true
+    # ระยะตีสูงสุดของโหมด Survival (ปกติ 3.0 บล็อก ปรับเผื่อแลคที่ 4.2 บล็อก)
+    max-distance: 4.2
+
+  # 9. ระบบกันคลิกไว (AutoClicker Check)
+  autoclicker:
+    enabled: true
+    punishment: "KICK"
+    max-vl: 5
+    cancel-attack: true
+    # จำนวนคลิกสูงสุดต่อวินาที (Clicks Per Second - CPS)
+    max-cps: 20
+
+  # 10. ระบบกัน Criticals ปลอม (Criticals Check)
+  # หลอกว่ากระโดดฟันติดคริ ทั้งที่ยืนอยู่บนพื้น
+  criticals:
+    enabled: true
+    punishment: "KICK"
+    max-vl: 4
+    cancel-attack: true
+
+  # ============================================================== #
+  #                 ระบบตรวจจับการขุด วาง และใช้งานไอเทม             #
+  # ============================================================== #
+  # 11. ระบบกันขุดไว / ขุดระเบิดบล็อก (FastBreak / Nuker Check)
+  fastbreak:
+    enabled: true
+    punishment: "KICK"
+    max-vl: 5
+    cancel-break: true
+
+  # 12. ระบบกันวางบล็อกรัว (FastPlace Check)
+  fastplace:
+    enabled: true
+    punishment: "KICK"
+    max-vl: 5
+    cancel-place: true
+    # จำนวนบล็อกสูงสุดที่อนุญาตให้วางได้ต่อวินาที
+    max-places-per-second: 15
+
+  # 13. ระบบกันกินไว / ยิงธนูไวผิดปกติ (FastUse Check)
+  fastuse:
+    enabled: true
+    punishment: "KICK"
+    max-vl: 4
+    cancel-action: true
+
+  # ============================================================== #
+  #      ระบบกรองคำหยาบคายภาษาไทย อังกฤษ และคาราโอเกะ (Chat Filter)  #
+  # ============================================================== #
+  chat-filter:
+    enabled: true
+    
+    # ตรวจสอบทุกคนไม่มียกเว้น (ทั้งแอดมิน, OP, คนธรรมดา, โหมด Creative จะถูกตรวจจับหมดทุกคนตามที่ขอ!)
+    # หากตั้งเป็น true แม้แต่คนที่มี OP หรือสิทธิ์ bypass ก็จะถูกเซ็นเซอร์/บล็อคคำหยาบ
+    filter-everyone: true
+    
+    # พฤติกรรมเมื่อพบคำหยาบ:
+    #   - "CENSOR"  : เซ็นเซอร์เฉพาะคำหยาบในข้อความ เช่น 'kuyพีค' กลายเป็น '***พีค' (ค่าเริ่มต้นตามที่ต้องการ!)
+    #   - "BLOCK"   : ยกเลิกไม่ให้ส่งข้อความทั้งหมด
+    #   - "NOTHING" : ปล่อยข้อความตามปกติ แต่ยังคิดคะแนนความผิด
+    action: "CENSOR"
+    
+    # คำหรือสัญลักษณ์ที่ใช้แทนที่คำหยาบเมื่อเซ็นเซอร์
+    censor-replacement: "***"
+    
+    # ทำงานเงียบ: ไม่แจ้งเตือนผู้เล่นส่วนตัว และไม่สแปมแชทแอดมิน
+    notify-player-on-censor: false
+    notify-staff-on-censor: false
+    
+    # การลงโทษผู้พูดคำหยาบ (ค่าเริ่มต้นคือ KICK เตะออกทันทีเมื่อแต้มเยอะแล้ว หรือ BAN)
+    punishment: "KICK"
+    # จำนวนครั้งที่ยอมให้พิมพ์คำหยาบได้ก่อนจะสั่งเตะหรือแบนทันที
+    max-vl: 3
+    # การลงโทษเมื่อพิมพ์คำหยาบครบ max-vl (KICK หรือ BAN)
+    action-on-max-vl: "KICK"
+    
+    # ข้อความส่งกลับหาคนพิมพ์คำหยาบกรณีตั้ง action: "BLOCK"
+    block-message: "&c[AntiMery] &eข้อความของคุณถูกระงับ เนื่องจากมีคำหยาบคายหรือไม่สุภาพ!"
+    
+    # กรองการเว้นวรรคหลบหลีก (เช่น 'ค ว ย', 'k u y', 'f u c k')
+    deep-normalization: true
+    
+    # รายการคำหยาบคาราโอเกะ (ภาษาอังกฤษที่ทับศัพท์คำหยาบไทย เช่น kuy, kuay, yed, hee, sus)
+    karaoke-badwords:
+      - "kuy"
+      - "kuay"
+      - "kuyy"
+      - "khuy"
+      - "khee"
+      - "hee"
+      - "dhee"
+      - "yed"
+      - "yhed"
+      - "yet"
+      - "sus"
+      - "sat"
+      - "sud"
+      - "suss"
+      - "sudd"
+      - "kwai"
+      - "kwaai"
+      - "qwai"
+      - "meung"
+      - "mueng"
+      - "mung"
+      - "goo"
+      - "gu"
+      - "dork"
+      - "dok"
+      - "dokthong"
+      - "dorkthong"
+      - "sontin"
+      - "sontheen"
+      - "hia"
+      - "hiah"
+      - "heea"
+      - "heee"
+      - "remm"
+      - "kradoc"
+      - "kradok"
+
+    # รายการคำหยาบภาษาไทย
+    thai-badwords:
+      - "ควย"
+      - "เหี้ย"
+      - "เหี้ยย"
+      - "สัส"
+      - "สัด"
+      - "เชี่ย"
+      - "ส้นตีน"
+      - "เย็ด"
+      - "มึง"
+      - "กู"
+      - "ห่า"
+      - "อีดอก"
+      - "ดอกทอง"
+      - "กวนตีน"
+      - "กาก"
+      - "หน้าตัวเมีย"
+      - "ปากหมา"
+      - "ชาติหมา"
+      - "แม่ง"
+      - "จัญไร"
+      - "กระหรี่"
+      - "กะหรี่"
+      - "แรด"
+      - "เสือก"
+      - "สันดาน"
+      - "ชิบหาย"
+      - "ฉิบหาย"
+      - "ดอ"
+      - "แตด"
+      - "หำ"
+      - "หรรม"
+      - "เงี่ยน"
+      - "อมควย"
+      - "เลียหี"
+      - "หี"
+      - "จิ๋ม"
+      - "ปี้"
+      - "ระยำ"
+
+    # รายการคำหยาบภาษาอังกฤษ
+    english-badwords:
+      - "fuck"
+      - "fucking"
+      - "fucker"
+      - "shit"
+      - "bitch"
+      - "ass"
+      - "asshole"
+      - "dick"
+      - "pussy"
+      - "cunt"
+      - "bastard"
+      - "dumbass"
+      - "wtf"
+      - "motherfucker"
+      - "slut"
+      - "whore"
+      - "nigger"
+      - "nigga"
+      - "fag"
+      - "faggot"
+      - "retard"
+      - "cock"
+      - "penis"
+      - "vagina"
+      - "boobs"
+      - "tits"
+      - "porn"
+      - "hentai"
+      - "sex"
+      - "dildo"
+
+    # คำที่ยกเว้น (Whitelist Words) ป้องกันการเซ็นเซอร์คำที่ถูกกฎ
+    whitelist:
+      - "class"
+      - "grass"
+      - "pass"
+      - "glass"
+      - "compass"
+      - "assistant"
+      - "mass"
+      - "bass"
+      - "กินข้าว"
+      - "คุณ"
+      - "ครับ"
+      - "ค่ะ"

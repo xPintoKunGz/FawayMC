@@ -1,0 +1,21 @@
+{
+  "bloomery.music.wipwup": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "bloomery/music/wipwup",
+        "stream": true
+      }
+    ]
+  },
+  "bloomery.music.doraemon": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "bloomery/music/doraemon",
+        "stream": true
+      }
+    ]
+  }
+}
+

@@ -1,0 +1,225 @@
+# ==============================================================================
+#                      BloomeryX - Core Configuration
+#               Distinctive Essentials Suite with LuckPerms Integration
+# ==============================================================================
+
+# General settings
+settings:
+  # Plugin chat prefix with hex color gradients
+  # Supports standard codes &a, &b... and Hex format &#RRGGBB
+  prefix: "&#FF758C[&#FF7EB3BloomeryX&#FF758C]&r "
+  
+  # Play nice sounds when commands succeed or fail
+  enable-sounds: true
+  success-sound: "ENTITY_EXPERIENCE_ORB_PICKUP"
+  error-sound: "ENTITY_VILLAGER_NO"
+  teleport-sound: "ENTITY_ENDERMAN_TELEPORT"
+
+# LuckPerms Name & Chat formatting integration
+chat:
+  # Enable custom BloomeryX chat formatting
+  enabled: true
+  
+  # Format uses placeholders:
+  # {prefix}      -> LuckPerms prefix
+  # {suffix}      -> LuckPerms suffix
+  # {group}       -> LuckPerms primary group
+  # {displayname} -> Player Display Name (including /nick if set)
+  # {name}        -> Real Minecraft username
+  # {message}     -> Chat message
+  # Also supports any PlaceholderAPI (%...)
+  format: "{prefix}&f{displayname}{suffix}&8: &7{message}"
+  
+  # Enable LuckPerms player list (Tablist) prefix & suffix synchronization
+  sync-tab-names: true
+  tab-format: "{prefix}&f{displayname}{suffix}"
+
+# Nametag & Tablist Name Formatting
+nametag:
+  # Enable nametag and tablist formatting
+  enabled: true
+  
+  # Format shown in player list when pressing TAB (supports LuckPerms & PlaceholderAPI)
+  tab-format: "{prefix}&f{displayname}{suffix}"
+  
+  # Floating Nametag above player's head (Vanilla Scoreboard Teams, NO sidebar scoreboard)
+  head:
+    enabled: true
+    prefix: "{prefix}"
+    suffix: "{suffix}"
+
+# ==============================================================================
+#                  BloomeryX Jukebox 2.0 (Custom Music Engine)
+# ==============================================================================
+music:
+  enabled: true
+  
+  # Show animated soundwave visualizer on the Action Bar while music plays
+  action-bar: true
+  
+  # Open Jukebox music menu when right-clicking a Jukebox block in the world
+  jukebox-block-click: true
+  
+  # Synchronized server-wide radio station (Bloomery Radio)
+  radio:
+    enabled: true
+    autoplay-on-join: false
+
+# Chat Mention System (@PlayerName)
+mention:
+  enabled: true
+  # Color code or Hex for the @Name tag in chat
+  highlight-color: "&#FF7EB3"
+  # Show on-screen Title alert to mentioned player
+  show-title: true
+  title: "&#FF7EB3✦ {sender} mentioned you!"
+  subtitle: "&7\"{message}\""
+  # Sound played when mentioned
+  sound: "BLOCK_NOTE_BLOCK_BELL"
+  # Message sent in chat to the mentioned player
+  format-chat: "&#FF7EB3✦ [Mention] &#B2EBF2{sender} &7called you: &f\"{message}\""
+
+# AFK System
+afk:
+  enabled: true
+  # Minutes of inactivity before player is marked as AFK (0 to disable auto AFK)
+  auto-afk-minutes: 5
+  # Teleport player to the set AFK location (/setafk) when entering AFK
+  teleport-on-afk: true
+  # Return player to their previous location when they move/return from AFK
+  return-on-active: true
+  # Broadcast to the whole server when a player goes AFK or returns
+  announce: true
+  messages:
+    enter-broadcast: "&#FF758C[AFK] &f{player} &7is now AFK (Away From Keyboard)"
+    exit-broadcast: "&#70E000[AFK] &f{player} &7is no longer AFK!"
+
+# Nickname system
+nickname:
+  min-length: 3
+  max-length: 16
+  prefix: "~"
+  disallowed-regex: "[^a-zA-Z0-9_&#]"
+
+# Teleportation & TPA
+teleport:
+  # TPA request timeout in seconds
+  tpa-timeout: 60
+  # Delay before teleporting in seconds (0 to disable delay)
+  teleport-delay: 0
+  # Cancel teleport if player moves
+  cancel-on-move: true
+
+# Home system
+homes:
+  # Default maximum homes for normal players
+  default-max-homes: 3
+  # Permission-based home limits:
+  # bloomeryx.homes.<group_name> will receive this amount
+  groups:
+    vip: 5
+    mvp: 10
+    admin: 100
+
+# Messages configuration
+messages:
+  no-permission: "&#FF4B4B✕ &cYou do not have permission to execute this command!"
+  player-only: "&#FF4B4B✕ &cThis command can only be used by players!"
+  player-not-found: "&#FF4B4B✕ &cPlayer &f{target} &cwas not found online."
+  unknown-command: "&#FF4B4B✕ &cUnknown command. Type &f/bx help &cfor all commands."
+  config-reloaded: "&#70E000✔ &aBloomeryX configuration and language have been reloaded!"
+  
+  # Broadcast Format
+  broadcast-format: "&#FF7EB3[Broadcast] &8: &f{message}"
+
+  # Gamemode
+  gamemode-self: "&#70E000✔ &aYour game mode has been set to &#B2EBF2{mode}"
+  gamemode-other: "&#70E000✔ &aSet &f{target}'s &agame mode to &#B2EBF2{mode}"
+  gamemode-by-other: "&#70E000✔ &aYour game mode was set to &#B2EBF2{mode} &aby &f{sender}"
+  
+  # Time & Weather
+  time-changed: "&#70E000✔ &aTime in &#B2EBF2{world} &aset to &#FFD166{time}"
+  weather-changed: "&#70E000✔ &aWeather in &#B2EBF2{world} &aset to &#70E000{weather}"
+  
+  # Player Utility
+  fly-enabled: "&#70E000✔ &aFlight mode &#70E000ENABLED"
+  fly-disabled: "&#FF758C✕ &cFlight mode &#FF758CDISABLED"
+  fly-other: "&#70E000✔ &aSet flight mode for &f{target} &ato {status}"
+  heal-self: "&#70E000✔ &aYou have been fully healed and fed!"
+  heal-other: "&#70E000✔ &aSuccessfully healed and fed &f{target}"
+  feed-self: "&#70E000✔ &aYour hunger has been fully restored!"
+  feed-other: "&#70E000✔ &aFed &f{target} &asuccessfully."
+  god-enabled: "&#70E000✔ &aGod mode &#70E000ENABLED"
+  god-disabled: "&#FF758C✕ &cGod mode &#FF758CDISABLED"
+  speed-set: "&#70E000✔ &aSet {type} speed to &#B2EBF2{speed}"
+  speed-invalid: "&#FF4B4B✕ &cPlease specify a speed between 1 and 10"
+  vanish-enabled: "&#70E000✔ &aYou are now invisible to other players &#70E000(Vanish ON)"
+  vanish-disabled: "&#FF758C✕ &cYou are now visible to other players &#FF758C(Vanish OFF)"
+  hat-success: "&#70E000✔ &aEnjoy your new hat!"
+  hat-empty: "&#FF4B4B✕ &cPlease hold an item in your main hand to wear it as a hat."
+  clear-self: "&#70E000✔ &aYour inventory has been cleared."
+  clear-other: "&#70E000✔ &aCleared inventory of &f{target}"
+  ping: "&#B2EBF2ℹ &7Ping of &f{target}&7: &#70E000{ping} ms"
+  near-header: "&#FF7EB3--- &fNearby Players ({radius} blocks) &#FF7EB3---"
+  near-entry: "&7- &f{target} &8(&#B2EBF2{distance}m&8)"
+  near-none: "&7No other players nearby."
+  repair-success: "&#70E000✔ &aItem repaired successfully!"
+  repair-failed: "&#FF4B4B✕ &cThis item cannot be repaired or is already at full durability."
+
+  # Homes & Warps
+  home-set: "&#70E000✔ &aHome &#B2EBF2{home} &aset successfully!"
+  home-deleted: "&#70E000✔ &aHome &#B2EBF2{home} &adeleted."
+  home-not-found: "&#FF4B4B✕ &cHome &#B2EBF2{home} &cnot found."
+  home-limit-reached: "&#FF4B4B✕ &cYou have reached your home limit ({limit} homes)."
+  home-teleport: "&#70E000✔ &aTeleported to home &#B2EBF2{home}!"
+  homes-list: "&#FF7EB3Your Homes ({count}/{limit}): &f{homes}"
+  warp-set: "&#70E000✔ &aWarp &#B2EBF2{warp} &acreated successfully!"
+  warp-deleted: "&#70E000✔ &aWarp &#B2EBF2{warp} &adeleted."
+  warp-not-found: "&#FF4B4B✕ &cWarp &#B2EBF2{warp} &cdoes not exist."
+  warp-teleport: "&#70E000✔ &aTeleported to warp &#B2EBF2{warp}!"
+  warps-list: "&#FF7EB3Available Warps: &f{warps}"
+
+  # AFK
+  afk-self-enter: "&#70E000✔ &aYou are now marked as AFK."
+  afk-self-exit: "&#70E000✔ &aYou are no longer AFK. Welcome back!"
+  afk-teleported: "&#B2EBF2ℹ &7You were teleported to the AFK zone."
+  afk-returned: "&#B2EBF2ℹ &7Returned to your previous location."
+  afk-point-set: "&#70E000✔ &aAFK location point has been set!"
+  afk-point-deleted: "&#70E000✔ &aAFK location point removed!"
+  afk-point-not-set: "&#FF4B4B✕ &cNo AFK destination point has been configured yet."
+
+  # TPA
+  tpa-sent: "&#70E000✔ &aTeleport request sent to &f{target} &a(Expires in {timeout}s)"
+  tpa-received: "&#B2EBF2✦ &f{sender} &#B2EBF2wants to teleport to you!\n  &7Type &#70E000/tpaccept &7to accept or &#FF758C/tpdeny &7to decline."
+  tpahere-sent: "&#70E000✔ &aSent request for &f{target} &ato teleport to you."
+  tpahere-received: "&#B2EBF2✦ &f{sender} &#B2EBF2wants you to teleport to them!\n  &7Type &#70E000/tpaccept &7to accept or &#FF758C/tpdeny &7to decline."
+  tpa-accepted-sender: "&#70E000✔ &f{target} &aaccepted your request. Teleporting..."
+  tpa-accepted-receiver: "&#70E000✔ &aAccepted teleport request from &f{sender}."
+  tpa-denied-sender: "&#FF758C✕ &f{target} &cdeclined your teleport request."
+  tpa-denied-receiver: "&#FF758C✕ &cDeclined teleport request from &f{sender}."
+  tpa-cancelled: "&#FF758C✔ &aCancelled your pending teleport request."
+  tpa-no-request: "&#FF4B4B✕ &cYou have no pending teleport requests."
+  tpa-self: "&#FF4B4B✕ &cYou cannot teleport to yourself!"
+
+  # Back
+  back-teleport: "&#70E000✔ &aReturned to your last location!"
+  back-no-location: "&#FF4B4B✕ &cNo previous location recorded."
+
+  # Teleport Direct
+  tp-success: "&#70E000✔ &aTeleported to &f{target}!"
+  tphere-success: "&#70E000✔ &aTeleported &f{target} &ato your location!"
+  tpall-success: "&#70E000✔ &aTeleported all online players to you!"
+
+  # Messaging
+  msg-format-send: "&#FF7EB3[me -> {target}]&8: &f{message}"
+  msg-format-receive: "&#FF7EB3[{sender} -> me]&8: &f{message}"
+  msg-spy: "&#7209B7[Spy] &#B2EBF2{sender} &7-> &#B2EBF2{target}&8: &f{message}"
+  msg-no-reply: "&#FF4B4B✕ &cNobody has messaged you recently."
+  msg-self: "&#FF4B4B✕ &cYou cannot message yourself!"
+
+  # Nickname
+  nick-set: "&#70E000✔ &aYour nickname has been changed to &#B2EBF2{nick}!"
+  nick-reset: "&#70E000✔ &aYour nickname has been reset."
+  nick-set-other: "&#70E000✔ &aChanged nickname of &f{target} &ato &#B2EBF2{nick}"
+  nick-reset-other: "&#70E000✔ &aReset nickname of &f{target}"
+  nick-invalid: "&#FF4B4B✕ &cNickname length must be between {min} and {max} characters."

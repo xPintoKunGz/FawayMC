@@ -1,7 +1,12 @@
 package org.kcm.bloomery.fawaymc.bungee;
 
 import net.md_5.bungee.api.plugin.Plugin;
+import net.md_5.bungee.config.Configuration;
+import net.md_5.bungee.config.ConfigurationProvider;
+import net.md_5.bungee.config.YamlConfiguration;
+import org.kcm.bloomery.fawaymc.bungee.command.FindCommand;
 import org.kcm.bloomery.fawaymc.bungee.command.LobbyCommand;
+import org.kcm.bloomery.fawaymc.bungee.command.SendCommand;
 import org.kcm.bloomery.fawaymc.bungee.command.SetLobbyCommand;
 import org.kcm.bloomery.fawaymc.bungee.listener.JoinListener;
 import org.kcm.bloomery.fawaymc.bungee.listener.PingListener;
@@ -10,14 +15,23 @@ import org.kcm.bloomery.fawaymc.bungee.manager.LobbyManager;
 import org.kcm.bloomery.fawaymc.bungee.manager.MotdManager;
 import org.kcm.bloomery.fawaymc.bungee.manager.PlayerSessionManager;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+
 public final class Global extends Plugin {
    private static Global instance;
    private MotdManager motdManager;
    private LobbyManager lobbyManager;
    private PlayerSessionManager sessionManager;
+   private Configuration config;
 
    public void onEnable() {
       instance = this;
+
+      loadConfig();
+
       this.motdManager = new MotdManager(this);
       this.lobbyManager = new LobbyManager(this);
       this.sessionManager = new PlayerSessionManager(this);
@@ -30,6 +44,8 @@ public final class Global extends Plugin {
       // Commands
       this.getProxy().getPluginManager().registerCommand(this, new SetLobbyCommand(this));
       this.getProxy().getPluginManager().registerCommand(this, new LobbyCommand(this));
+      this.getProxy().getPluginManager().registerCommand(this, new SendCommand(this));
+      this.getProxy().getPluginManager().registerCommand(this, new FindCommand(this));
 
       // Auto-save sessions.yml ทุก 60 วินาที
       this.sessionManager.startAutoSave();
@@ -46,6 +62,27 @@ public final class Global extends Plugin {
       this.getLogger().info("§c[FawayMC-Bungeecord] disabled!");
    }
 
+   private void loadConfig() {
+      try {
+         if (!getDataFolder().exists()) {
+            getDataFolder().mkdir();
+         }
+         File file = new File(getDataFolder(), "config.yml");
+         if (!file.exists()) {
+            try (InputStream in = getResourceAsStream("config.yml")) {
+               Files.copy(in, file.toPath());
+            }
+         }
+         this.config = ConfigurationProvider.getProvider(YamlConfiguration.class).load(file);
+      } catch (IOException e) {
+         e.printStackTrace();
+      }
+   }
+
+   public Configuration getConfig() {
+      return config;
+   }
+
    public static Global getInstance() {
       return instance;
    }
@@ -60,22 +97,5 @@ public final class Global extends Plugin {
 
    public PlayerSessionManager getSessionManager() {
       return this.sessionManager;
-   }
-
-   /**
-    * true ถ้าเซิร์ฟเวอร์นี้ถือเป็น lobby (อิงจาก LobbyManager.getLobbyServerName())
-    */
-   public boolean isLobbyServer(String serverName) {
-      if (serverName == null || serverName.isEmpty()) return false;
-      String lobby = this.lobbyManager != null ? this.lobbyManager.getLobbyServerName() : null;
-      return lobby != null && lobby.equalsIgnoreCase(serverName);
-   }
-
-   /**
-    * เปิด/ปิดฟีเจอร์ stay-on-server
-    * ตอนนี้ hard-code = true; ถ้าต้องการทำ config เพิ่มทีหลังสามารถแก้เมธอดนี้ได้
-    */
-   public boolean isStayServerEnabled() {
-      return true;
    }
 }

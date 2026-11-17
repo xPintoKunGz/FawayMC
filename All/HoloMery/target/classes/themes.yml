@@ -1,0 +1,97 @@
+# ========================================================
+#            ✦ HoloMery Custom Color Themes ✦
+#   Define unlimited custom gradient palettes with hex codes!
+#   Use in any hologram line with: <themename>Your Text</themename>
+# ========================================================
+
+themes:
+  # Electric Cyan to Deep Neon Pink
+  cyberpunk:
+    - "#00F2FE"
+    - "#4FACFE"
+    - "#FF0080"
+
+  # Vibrant Emerald to Sky Azure and Violet
+  aurora:
+    - "#00F5A0"
+    - "#00D9F5"
+    - "#7A00FF"
+
+  # Warm Sunset: Peach to Sunset Violet
+  sunset:
+    - "#FA709A"
+    - "#FEE140"
+    - "#9A1F6E"
+
+  # Fluorescent Lime to Bright Cyan
+  neon:
+    - "#00FF87"
+    - "#60EFFF"
+
+  # Soft Cherry Blossom: Rose to White to Peach
+  sakura:
+    - "#FF9A9E"
+    - "#FECFEF"
+    - "#F64F59"
+
+  # Royal Amethyst to Coral Flame
+  amethyst:
+    - "#8A2387"
+    - "#E94057"
+    - "#F27121"
+
+  # Cosmic Galaxy: Deep Indigo to Star Pink
+  galaxy:
+    - "#120E43"
+    - "#5F27CD"
+    - "#C06C84"
+
+  # Deep Oceanic Blue to Aqua
+  ocean:
+    - "#2E3192"
+    - "#1BFFFF"
+
+  # Blazing Fire: Crimson to Tangerine to Solar Gold
+  fire:
+    - "#FF0844"
+    - "#FFB199"
+    - "#FFDE59"
+
+  # Arctic Glacial Ice: Frost White to Cyan
+  ice:
+    - "#A1C4FD"
+    - "#C2E9FB"
+    - "#00C9FF"
+
+  # Full Spectrum Rainbow
+  rainbow:
+    - "#FF0000"
+    - "#FF7F00"
+    - "#FFFF00"
+    - "#00FF00"
+    - "#0000FF"
+    - "#4B0082"
+    - "#9400D3"
+
+  # Sunburst Gold & Amber
+  gold:
+    - "#F7971E"
+    - "#FFD200"
+
+  # 80s Synthwave: Hot Magenta to Deep Purple
+  synthwave:
+    - "#FC466B"
+    - "#3F5EFB"
+
+  # Matrix Digital Rain: Neon Lime to Forest Green
+  matrix:
+    - "#00FF66"
+    - "#008822"
+
+  # Sweet Pastel Candy: Pink, Buttercup, Mint, Powder Blue
+  candy:
+    - "#FF99C8"
+    - "#FCF6BD"
+    - "#D0F4DE"
+    - "#A9DEF9"
+

@@ -1,0 +1,36 @@
+# ========================================================
+#                  EditMery Configuration
+#       Theme: Modern Minecraft Neon-Pastel Gradient
+# ========================================================
+
+# Prefix สำหรับคำสั่ง WorldEdit ทุกคำสั่ง (//set, //pos1, //pos2, //wand ฯลฯ)
+worldedit-prefix: "&8(§x§b§3§8§8§f§f§lEdit§x§f§f§8§0§a§b§lMery&8)&7 {0}"
+
+prefix: "&#B388FF✦ &#D188FFE&#E088FFd&#F088FFi&#FF80ABt&#FF88BBM&#FF90CBe&#FF99DBr&#FFA2EBy &#FF80AB✦ &8» &f"
+
+# บังคับปิดการใช้งานทุกครั้งที่เข้าเซิร์ฟเวอร์ (เริ่มต้นปิดขวานไว้เสมอ)
+disable-on-join: true
+
+# การตั้งค่าเสียงเอฟเฟกต์ (Sound Effects)
+sounds:
+  toggle-on: "ENTITY_PLAYER_LEVELUP"
+  toggle-on-pitch: 1.5
+  toggle-off: "BLOCK_NOTE_BLOCK_BASS"
+  toggle-off-pitch: 0.8
+  blocked: "BLOCK_NOTE_BLOCK_BASS"
+  blocked-pitch: 0.5
+
+# ระบบ Bypass สำหรับผู้ดูแล
+enable-bypass: false
+bypass-permission: "editmery.bypass"
+
+# ข้อความแจ้งเตือนต่างๆ (Messages)
+messages:
+  enabled: "&8(&#B388FF✦ &#FF80ABEditMery&8) &#06D6A0✔ &fเปิดใช้งานโหมดขวาน WorldEdit แล้ว &8(พิมพ์ &#EF476F/em disable &8เมื่อต้องการปิด)"
+  disabled: "&8(&#B388FF✦ &#FF80ABEditMery&8) &#EF476F✖ &fปิดการใช้งานโหมดขวาน WorldEdit &8(ขวานไม้ใช้ตัดไม้ทุบบล็อกได้ตามปกติ)"
+
+  status-on: "&#B388FF✦ &#FF80ABEditMery &8| &fสถานะปัจจุบัน: &#06D6A0● เปิดใช้งาน (ENABLED)"
+  status-off: "&#B388FF✦ &#FF80ABEditMery &8| &fสถานะปัจจุบัน: &#EF476F● ปิดการใช้งาน (DISABLED)"
+
+  no-permission: "&#B388FF✦ &#FF80ABEditMery &8| &#EF476F✖ คำสั่งนี้สามารถใช้งานได้เฉพาะผู้ดูแลเซิร์ฟเวอร์ (OP) เท่านั้น!"
+  reloaded: "&#06D6A0✔ รีโหลดการตั้งค่า EditMery เรียบร้อยแล้ว!"

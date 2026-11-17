@@ -1,0 +1,24 @@
+# ========================================================
+#                    MeryITEM Configuration
+#           Modern Aesthetic RPG Item System (v1.0.0)
+# ========================================================
+
+settings:
+  # Prefix used in chat messages
+  prefix: "&#F472B6§lMeryITEM &#334155» &#CBD5E1"
+
+  # Play chime sounds upon interacting with custom menus
+  play-sounds: true
+
+  # Default base player stats
+  base-stats:
+    crit-chance: 5.0
+    crit-damage: 50.0
+    defense-factor: 100.0
+
+  # Action bar notifications for critical hits & ability cooldowns
+  action-bar-alerts: true
+
+  # Auto-update player attributes when equipment changes
+  sync-attributes: true
+

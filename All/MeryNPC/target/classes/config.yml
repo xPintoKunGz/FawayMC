@@ -1,0 +1,32 @@
+# -----------------------------------------------------------
+#  ███╗   ███╗███████╗██████╗ ██╗   ██╗███╗   ██╗██████╗  ██████╗
+#  ████╗ ████║██╔════╝██╔══██╗╚██╗ ██╔╝████╗  ██║██╔══██╗██╔════╝
+#  ██╔████╔██║█████╗  ██████╔╝ ╚████╔╝ ██╔██╗ ██║██████╔╝██║     
+#  ██║╚██╔╝██║██╔══╝  ██╔══██╗  ╚██╔╝  ██║╚██╗██║██╔═══╝ ██║     
+#  ██║ ╚═╝ ██║███████╗██║  ██║   ██║   ██║ ╚████║██║     ╚██████╗
+# -----------------------------------------------------------
+# Version: 26.3 | Modern Color Palette: Neon Cyan / Gradient
+# -----------------------------------------------------------
+
+settings:
+  # Enable sound effects for GUI interactions and command executions
+  enable-sounds: true
+  
+  # Default settings for new NPCs
+  defaults:
+    look-at-player: true
+    look-distance: 6.0
+    hologram-offset: 0.35
+    invulnerable: true
+    gravity: false
+    show-arms: true
+    small: false
+
+  # Performance
+  auto-save-interval-minutes: 5
+  async-skin-fetch: true
+
+  # BungeeCord / Velocity server connection support
+  bungeecord:
+    enabled: true
+

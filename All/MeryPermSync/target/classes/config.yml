@@ -1,0 +1,16 @@
+# ==========================================
+# MeryPermSync - LuckPerms Auto Linker Config
+# ==========================================
+
+# Path to the BungeeCord master LuckPerms yaml-storage directory.
+# You can use an absolute path or a relative path (e.g., ../fawaymc-4AATL/plugins/LuckPerms/yaml-storage)
+master-storage-path: "/var/www/krachabmitr.nahost.in.th/storage/app/minecraft-servers/fawaymc-4AATL/plugins/LuckPerms/yaml-storage"
+
+# Fallback relative path if the absolute path is not found
+fallback-relative-path: "../fawaymc-4AATL/plugins/LuckPerms/yaml-storage"
+
+# Automatically ensure storage-method in LuckPerms config.yml is set to yaml
+auto-configure-yaml: true
+
+# Automatically create symbolic link if missing
+auto-link: true

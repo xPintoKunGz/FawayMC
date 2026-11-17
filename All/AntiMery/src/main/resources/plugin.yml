@@ -1,0 +1,41 @@
+name: AntiMery
+version: '26.3'
+main: com.antimery.AntiMery
+api-version: '1.20'
+author: AntiMeryTeam
+description: Advanced Anti-Cheat, Anti-Fly & Thai/English Swear Filter for Minecraft
+website: https://github.com/antimery
+
+commands:
+  antimery:
+    description: คำสั่งหลักของระบบกันแฮค AntiMery
+    permission: antimery.admin
+    usage: /antimery <reload|alerts|stats|check|help>
+    aliases: [am, anticheat]
+
+permissions:
+  antimery.admin:
+    description: สิทธิ์ผู้ดูแลระบบ AntiMery
+    default: op
+  antimery.alerts:
+    description: สิทธิ์รับการแจ้งเตือนเมื่อตรวจพบคนแฮคหรือพิมพ์คำหยาบ
+    default: op
+  antimery.bypass:
+    description: สิทธิ์ข้ามการตรวจสอบทั้งหมด
+    default: op
+  antimery.bypass.fly:
+    description: สิทธิ์บินได้โดยไม่ถูกตรวจจับ
+    default: op
+  antimery.bypass.movement:
+    description: สิทธิ์ข้ามการตรวจจับความเร็วและการเดิน
+    default: op
+  antimery.bypass.combat:
+    description: สิทธิ์ข้ามการตรวจจับการต่อสู้ (KillAura, Reach, CPS)
+    default: op
+  antimery.bypass.chat:
+    description: สิทธิ์ข้ามการตรวจจับคำหยาบ
+    default: op
+  antimery.bypass.world:
+    description: สิทธิ์ข้ามการตรวจจับการขุด/วางบล็อก
+    default: op
+
